@@ -1,0 +1,7 @@
+Package typed-num 0.3.0
+License: WTFPL
+Repository: https://github.com/ldm0/typed-num
+
+The crate archive declares WTFPL but does not include a standalone license file.
+The accompanying COPYING.WTFPL is the standard license document from
+https://spdx.org/licenses/WTFPL.html, not a claim that its author owns this crate.

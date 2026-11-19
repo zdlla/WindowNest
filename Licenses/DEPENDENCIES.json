@@ -1,0 +1,1604 @@
+{
+  "schemaVersion": 1,
+  "auditDate": "2026-11-19",
+  "cargoLockSHA256": "ee04903209925bc71d9dc8c7e0885a964a6597c2850881575bee22c68db5f7bc",
+  "components": [
+    {
+      "name": "Cardinal",
+      "version": "4c50734f9a09d88110f96652b43634b412f79449",
+      "repository": "https://github.com/cardisoft/cardinal",
+      "licenseDeclared": "MIT",
+      "licenseFiles": [
+        "Cardinal-MIT.txt"
+      ],
+      "scope": "Vendored Rust engine crates, with local patches listed in Vendor/Cardinal/WINDOW-NEST-PATCHES.md"
+    },
+    {
+      "name": "LRUCache",
+      "version": "1.3.0 / f0570e943ea4445d258113ba73f50cb2b7e564ac",
+      "repository": "https://github.com/nicklockwood/LRUCache",
+      "licenseDeclared": "MIT",
+      "licenseFiles": [
+        "LRUCache-MIT.txt"
+      ],
+      "scope": "Copied Swift cache implementation"
+    },
+    {
+      "name": "Amethyst",
+      "version": "adapted window-key handoff",
+      "repository": "https://github.com/ianyh/Amethyst",
+      "licenseDeclared": "MIT",
+      "licenseFiles": [
+        "Amethyst-MIT.txt"
+      ],
+      "scope": "Window-key compatibility adapter in Sources/NativeWindowFocus.swift"
+    },
+    {
+      "name": "Lucide",
+      "version": "9 selected SVG snapshots, 2026-11-19",
+      "repository": "https://github.com/lucide-icons/lucide",
+      "licenseDeclared": "ISC; MIT for Feather-derived portions",
+      "licenseFiles": [
+        "Lucide-ISC-MIT.txt"
+      ],
+      "scope": "9 SVGs with full upstream ISC/MIT text; local tint, white document fill and extension-label PNG derivatives; no runtime library",
+      "sourceManifest": "Vendor/Lucide/SOURCE.json"
+    }
+  ],
+  "rustRegistryPackages": [
+    {
+      "name": "aho-corasick",
+      "version": "1.1.5",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/aho-corasick",
+      "archiveSHA256": "c982642fa9e8606056828ee9a8505737230110bb1099153c79efe865c59d12ba",
+      "noticeFiles": [
+        "Rust/aho-corasick-1.1.5/COPYING",
+        "Rust/aho-corasick-1.1.5/LICENSE-MIT",
+        "Rust/aho-corasick-1.1.5/UNLICENSE"
+      ]
+    },
+    {
+      "name": "allocator-api2",
+      "version": "0.2.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/zakarumych/allocator-api2",
+      "archiveSHA256": "683d7910e743518b0e34f1186f92494becacb047c7b6bf616c96772180fef923",
+      "noticeFiles": [
+        "Rust/allocator-api2-0.2.21/LICENSE-APACHE",
+        "Rust/allocator-api2-0.2.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "anyhow",
+      "version": "1.0.104",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/anyhow",
+      "archiveSHA256": "330a5ed07fa54e4702c9d6c4174f74427fc0ef6e214bbd677ae50a5099946470",
+      "noticeFiles": [
+        "Rust/anyhow-1.0.104/LICENSE-APACHE",
+        "Rust/anyhow-1.0.104/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "base64",
+      "version": "0.23.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/marshallpierce/rust-base64",
+      "archiveSHA256": "ac07cdecf99051d9a5238b80f35af32cdeba5b336e55d957b318b50137e18da5",
+      "noticeFiles": [
+        "Rust/base64-0.23.1/LICENSE-APACHE",
+        "Rust/base64-0.23.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "bitflags",
+      "version": "1.3.2",
+      "licenseDeclared": "MIT/Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/bitflags/bitflags",
+      "archiveSHA256": "bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a",
+      "noticeFiles": [
+        "Rust/bitflags-1.3.2/LICENSE-APACHE",
+        "Rust/bitflags-1.3.2/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "bitflags",
+      "version": "2.13.2",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/bitflags/bitflags",
+      "archiveSHA256": "3ded4057c258ba199e2d26386d3af3780957ecaee6c4ef4041c6b4b8b97c0b06",
+      "noticeFiles": [
+        "Rust/bitflags-2.13.2/LICENSE-APACHE",
+        "Rust/bitflags-2.13.2/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "block2",
+      "version": "0.6.2",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "cdeb9d870516001442e364c5220d3574d2da8dc765554b4a617230d33fa58ef5",
+      "noticeFiles": [
+        "Rust/block2-0.6.2/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "cc",
+      "version": "1.11.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "archiveSHA256": "375989decec1a0fa424442bed520fa12ede43a48475ce8c7417d2c69b32b5f6b",
+      "noticeFiles": [
+        "Rust/cc-1.11.0/LICENSE-APACHE",
+        "Rust/cc-1.11.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/cfg-if",
+      "archiveSHA256": "4e7648175b45a9a48536d676f68d918270699102aa8dab5496df06904c914600",
+      "noticeFiles": [
+        "Rust/cfg-if-1.0.5/LICENSE-APACHE",
+        "Rust/cfg-if-1.0.5/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "cobs",
+      "version": "0.3.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/jamesmunns/cobs.rs",
+      "archiveSHA256": "0fa961b519f0b462e3a3b4a34b64d119eeaca1d59af726fe450bbba07a9fc0a1",
+      "noticeFiles": [
+        "Rust/cobs-0.3.0/LICENSE-APACHE",
+        "Rust/cobs-0.3.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "crossbeam-channel",
+      "version": "0.5.17",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "archiveSHA256": "98b0cc327b5bc766e7fda9c9260cc0fa81b43a8e240440422dff70788e3f9ef1",
+      "noticeFiles": [
+        "Rust/crossbeam-channel-0.5.17/LICENSE-APACHE",
+        "Rust/crossbeam-channel-0.5.17/LICENSE-MIT",
+        "Rust/crossbeam-channel-0.5.17/LICENSE-THIRD-PARTY"
+      ]
+    },
+    {
+      "name": "crossbeam-deque",
+      "version": "0.8.8",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "archiveSHA256": "622f3fc73690be383c7214310406f28a90e6edeadc3cea882f9d71e495b9711a",
+      "noticeFiles": [
+        "Rust/crossbeam-deque-0.8.8/LICENSE-APACHE",
+        "Rust/crossbeam-deque-0.8.8/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "crossbeam-epoch",
+      "version": "0.9.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "archiveSHA256": "dc74980687109a3b14c72fd458107bf0baa1da1a1a805e178d15501ba9b86d9d",
+      "noticeFiles": [
+        "Rust/crossbeam-epoch-0.9.21/LICENSE-APACHE",
+        "Rust/crossbeam-epoch-0.9.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "crossbeam-utils",
+      "version": "0.8.23",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/crossbeam-rs/crossbeam",
+      "archiveSHA256": "a31eee39dddec8330830986fcd7625edb5a24ec90ea038215273bbc3adb08ac6",
+      "noticeFiles": [
+        "Rust/crossbeam-utils-0.8.23/LICENSE-APACHE",
+        "Rust/crossbeam-utils-0.8.23/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "defmt",
+      "version": "1.2.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/knurling-rs/defmt",
+      "archiveSHA256": "e4a0795ac740cb54d7b3775c9c17345f6aaecf884c01733b39d6017738e0e3e1",
+      "noticeFiles": [
+        "Rust/defmt-1.2.0/LICENSE-APACHE",
+        "Rust/defmt-1.2.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "defmt-macros",
+      "version": "1.2.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/knurling-rs/defmt",
+      "archiveSHA256": "840bb056bd99c495c9188198a258ab787c79f306d864db3e6e8451442d6d8366",
+      "noticeFiles": [
+        "Rust/defmt-macros-1.2.0/LICENSE-APACHE",
+        "Rust/defmt-macros-1.2.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "defmt-parser",
+      "version": "1.1.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/knurling-rs/defmt",
+      "archiveSHA256": "71958f69fb2de856c5dd51ac9377e986ca1aa5919f931bf5395a807277f889a0",
+      "noticeFiles": [
+        "Rust/defmt-parser-1.1.0/LICENSE-APACHE",
+        "Rust/defmt-parser-1.1.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "deranged",
+      "version": "0.5.9",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/jhpratt/deranged",
+      "archiveSHA256": "9e9de72ce2ad1f90dc62fa25f0f430ef85eb4b0d8fa0be4f30373bc40a21d28e",
+      "noticeFiles": [
+        "Rust/deranged-0.5.9/LICENSE-Apache",
+        "Rust/deranged-0.5.9/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "dispatch2",
+      "version": "0.3.1",
+      "licenseDeclared": "Zlib OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "1e0e367e4e7da84520dedcac1901e4da967309406d1e51017ae1abfb97adbd38",
+      "noticeFiles": [
+        "Rust/dispatch2-0.3.1/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "either",
+      "version": "1.19.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rayon-rs/either",
+      "archiveSHA256": "0e9c71c2167ca323c882b99918929403426e2373ea17242ff5653e0d5e1058be",
+      "noticeFiles": [
+        "Rust/either-1.19.0/LICENSE-APACHE",
+        "Rust/either-1.19.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "embedded-io",
+      "version": "0.4.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/embassy-rs/embedded-io",
+      "archiveSHA256": "ef1a6892d9eef45c8fa6b9e0086428a2cca8491aca8f787c534a3d6d0bcb3ced",
+      "noticeFiles": [
+        "Rust/embedded-io-0.4.0/LICENSE-APACHE",
+        "Rust/embedded-io-0.4.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "embedded-io",
+      "version": "0.6.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-embedded/embedded-hal",
+      "archiveSHA256": "edd0f118536f44f5ccd48bcb8b111bdc3de888b58c74639dfb034a357d0f206d",
+      "noticeFiles": [
+        "Rust/embedded-io-0.6.1/LICENSE-APACHE",
+        "Rust/embedded-io-0.6.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "enumn",
+      "version": "0.1.14",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/enumn",
+      "archiveSHA256": "2f9ed6b3789237c8a0c1c505af1c7eb2c560df6186f01b098c3a1064ea532f38",
+      "noticeFiles": [
+        "Rust/enumn-0.1.14/LICENSE-APACHE",
+        "Rust/enumn-0.1.14/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.3",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/indexmap-rs/equivalent",
+      "archiveSHA256": "00d174d5400e5e8fd687ad1049e2f578285fa914201b1af7e8b112a4546bd826",
+      "noticeFiles": [
+        "Rust/equivalent-1.0.3/LICENSE-APACHE",
+        "Rust/equivalent-1.0.3/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "errno",
+      "version": "0.3.14",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/lambda-fairy/rust-errno",
+      "archiveSHA256": "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb",
+      "noticeFiles": [
+        "Rust/errno-0.3.14/LICENSE-APACHE",
+        "Rust/errno-0.3.14/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "fastrand",
+      "version": "2.5.0",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/smol-rs/fastrand",
+      "archiveSHA256": "da7c62ceae207dd37ea5b845da6a0696c799f85e97da1ab5b7910be3c1c80223",
+      "noticeFiles": [
+        "Rust/fastrand-2.5.0/LICENSE-APACHE",
+        "Rust/fastrand-2.5.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "find-msvc-tools",
+      "version": "0.1.15",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/cc-rs",
+      "archiveSHA256": "1c66915cc5391097de7a2b0b972e8505aa33c0df401fd3a6811dbdb32881ba48",
+      "noticeFiles": [
+        "Rust/find-msvc-tools-0.1.15/LICENSE-APACHE",
+        "Rust/find-msvc-tools-0.1.15/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "licenseDeclared": "Zlib",
+      "licenseSelected": "Zlib",
+      "repository": "https://github.com/orlp/foldhash",
+      "archiveSHA256": "77ce24cb58228fbb8aa041425bb1050850ac19177686ea6e0f41a70416f56fdb",
+      "noticeFiles": [
+        "Rust/foldhash-0.2.0/LICENSE"
+      ]
+    },
+    {
+      "name": "getrandom",
+      "version": "0.4.3",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-random/getrandom",
+      "archiveSHA256": "300e883d756b2e4ec94e02791f39b04b522276138852cfc41d9fb7e904106099",
+      "noticeFiles": [
+        "Rust/getrandom-0.4.3/LICENSE-APACHE",
+        "Rust/getrandom-0.4.3/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.16.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/hashbrown",
+      "archiveSHA256": "841d1cc9bed7f9236f321df977030373f4a4163ae1a7dbfe1a51a2c1a51d9100",
+      "noticeFiles": [
+        "Rust/hashbrown-0.16.1/LICENSE-APACHE",
+        "Rust/hashbrown-0.16.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/hashbrown",
+      "archiveSHA256": "ed5909b6e89a2db4456e54cd5f673791d7eca6732202bbf2a9cc504fe2f9b84a",
+      "noticeFiles": [
+        "Rust/hashbrown-0.17.1/LICENSE-APACHE",
+        "Rust/hashbrown-0.17.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.2",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/indexmap-rs/indexmap",
+      "archiveSHA256": "cc4e190f5d26ca7051642629da2c52fc03bde85a03197c99408dcd291734c855",
+      "noticeFiles": [
+        "Rust/indexmap-2.14.2/LICENSE-APACHE",
+        "Rust/indexmap-2.14.2/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "itertools",
+      "version": "0.14.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-itertools/itertools",
+      "archiveSHA256": "2b192c782037fadd9cfa75548310488aabdbf3d2da73885b31bd0abd03351285",
+      "noticeFiles": [
+        "Rust/itertools-0.14.0/LICENSE-APACHE",
+        "Rust/itertools-0.14.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/itoa",
+      "archiveSHA256": "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682",
+      "noticeFiles": [
+        "Rust/itoa-1.0.18/LICENSE-APACHE",
+        "Rust/itoa-1.0.18/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "jiff",
+      "version": "0.2.39",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/jiff",
+      "archiveSHA256": "3ac703058abac89e5c39b0b879dce2b6b14a4ba36600c7e7e3d0c60a6883ef3c",
+      "noticeFiles": [
+        "Rust/jiff-0.2.39/COPYING",
+        "Rust/jiff-0.2.39/LICENSE-MIT",
+        "Rust/jiff-0.2.39/UNLICENSE"
+      ]
+    },
+    {
+      "name": "jiff-core",
+      "version": "0.1.2",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/jiff",
+      "archiveSHA256": "aee43309eb53bafb8c36d35d6e444769c8f8e6206a9fbf7546f5db9d7d4a0e93",
+      "noticeFiles": [
+        "Rust/jiff-core-0.1.2/COPYING",
+        "Rust/jiff-core-0.1.2/LICENSE-MIT",
+        "Rust/jiff-core-0.1.2/UNLICENSE"
+      ]
+    },
+    {
+      "name": "jiff-static",
+      "version": "0.2.39",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/jiff",
+      "archiveSHA256": "6dc32470c67eb7d0e9ccb74303fa925313dc04cecb1aa048beaa6f391e36a93d",
+      "noticeFiles": [
+        "Rust/jiff-static-0.2.39/COPYING",
+        "Rust/jiff-static-0.2.39/LICENSE-MIT",
+        "Rust/jiff-static-0.2.39/UNLICENSE"
+      ]
+    },
+    {
+      "name": "jiff-tzdb",
+      "version": "0.1.9",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/jiff",
+      "archiveSHA256": "fa8377070c6bae868759445e5a77f66d84f0b72f3a054bfb00e6d038b8282da7",
+      "noticeFiles": [
+        "Rust/jiff-tzdb-0.1.9/COPYING",
+        "Rust/jiff-tzdb-0.1.9/LICENSE-MIT",
+        "Rust/jiff-tzdb-0.1.9/UNLICENSE"
+      ]
+    },
+    {
+      "name": "jiff-tzdb-platform",
+      "version": "0.1.3",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/jiff",
+      "archiveSHA256": "875a5a69ac2bab1a891711cf5eccbec1ce0341ea805560dcd90b7a2e925132e8",
+      "noticeFiles": [
+        "Rust/jiff-tzdb-platform-0.1.3/COPYING",
+        "Rust/jiff-tzdb-platform-0.1.3/LICENSE-MIT",
+        "Rust/jiff-tzdb-platform-0.1.3/UNLICENSE"
+      ]
+    },
+    {
+      "name": "jobserver",
+      "version": "0.1.35",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/jobserver-rs",
+      "archiveSHA256": "1c00acbd29eabad4a2392fa0e921c874934dbbf4194312ad20f04a0ed67a3cb3",
+      "noticeFiles": [
+        "Rust/jobserver-0.1.35/LICENSE-APACHE",
+        "Rust/jobserver-0.1.35/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "libc",
+      "version": "0.2.191",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/libc",
+      "archiveSHA256": "65cd87c9a6d60536580b316ad985726104730a5151c99845f2490428ef91240a",
+      "noticeFiles": [
+        "Rust/libc-0.2.191/LICENSE-APACHE",
+        "Rust/libc-0.2.191/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "linux-raw-sys",
+      "version": "0.12.1",
+      "licenseDeclared": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/sunfishcode/linux-raw-sys",
+      "archiveSHA256": "32a66949e030da00e8c7d4434b251670a91556f4144941d37452769c25d58a53",
+      "noticeFiles": [
+        "Rust/linux-raw-sys-0.12.1/COPYRIGHT",
+        "Rust/linux-raw-sys-0.12.1/LICENSE-APACHE",
+        "Rust/linux-raw-sys-0.12.1/LICENSE-Apache-2.0_WITH_LLVM-exception",
+        "Rust/linux-raw-sys-0.12.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "lock_api",
+      "version": "0.4.14",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "archiveSHA256": "224399e74b87b5f3557511d98dff8b14089b3dadafcab6bb93eab67d3aace965",
+      "noticeFiles": [
+        "Rust/lock_api-0.4.14/LICENSE-APACHE",
+        "Rust/lock_api-0.4.14/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "log",
+      "version": "0.4.35",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/log",
+      "archiveSHA256": "5d15f86d12da44cd8d4ec3c73984537eb7f4cadcb9776a575a0a8a05ca11005c",
+      "noticeFiles": [
+        "Rust/log-0.4.35/LICENSE-APACHE",
+        "Rust/log-0.4.35/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "licenseDeclared": "Unlicense OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/BurntSushi/memchr",
+      "archiveSHA256": "cf8baf1c55e62ffcace7a9f06f4bd9cd3f0c4beb022d3b367256b91b87513d98",
+      "noticeFiles": [
+        "Rust/memchr-2.8.3/COPYING",
+        "Rust/memchr-2.8.3/LICENSE-MIT",
+        "Rust/memchr-2.8.3/UNLICENSE"
+      ]
+    },
+    {
+      "name": "memmap2",
+      "version": "0.9.12",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/RazrFalcon/memmap2-rs",
+      "archiveSHA256": "6b0ca1155a9ecc25aa12e8313a119f32edf0255fea2f44839c4ac0a12b2ac157",
+      "noticeFiles": [
+        "Rust/memmap2-0.9.12/LICENSE-APACHE",
+        "Rust/memmap2-0.9.12/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "num-conv",
+      "version": "0.2.2",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/jhpratt/num-conv",
+      "archiveSHA256": "521739c6d2bac4aa25192232afe6841231376b2b26d4d9fae5ecf8ca5772e441",
+      "noticeFiles": [
+        "Rust/num-conv-0.2.2/LICENSE-Apache",
+        "Rust/num-conv-0.2.2/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "objc2",
+      "version": "0.6.5",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "08849bbd4767dfae9457696856ae1c84fe4e0281bbe4a7abff2d0e06fb7981f8",
+      "noticeFiles": [
+        "Rust/objc2-0.6.5/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "objc2-core-foundation",
+      "version": "0.3.2",
+      "licenseDeclared": "Zlib OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "2a180dd8642fa45cdb7dd721cd4c11b1cadd4929ce112ebd8b9f5803cc79d536",
+      "noticeFiles": [
+        "Rust/objc2-core-foundation-0.3.2/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "objc2-core-services",
+      "version": "0.3.2",
+      "licenseDeclared": "Zlib OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "583300ad934cba24ff5292aee751ecc070f7ca6b39a574cc21b7b5e588e06a0b",
+      "noticeFiles": [
+        "Rust/objc2-core-services-0.3.2/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "objc2-encode",
+      "version": "4.1.0",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/madsmtm/objc2",
+      "archiveSHA256": "ef25abbcd74fb2609453eb695bd2f860d389e457f67dc17cafc8b8cbc89d0c33",
+      "noticeFiles": [
+        "Rust/objc2-encode-4.1.0/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.4",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/matklad/once_cell",
+      "archiveSHA256": "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50",
+      "noticeFiles": [
+        "Rust/once_cell-1.21.4/LICENSE-APACHE",
+        "Rust/once_cell-1.21.4/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "parking_lot",
+      "version": "0.12.5",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "archiveSHA256": "93857453250e3077bd71ff98b6a65ea6621a19bb0f559a85248955ac12c45a1a",
+      "noticeFiles": [
+        "Rust/parking_lot-0.12.5/LICENSE-APACHE",
+        "Rust/parking_lot-0.12.5/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "parking_lot_core",
+      "version": "0.9.12",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Amanieu/parking_lot",
+      "archiveSHA256": "2621685985a2ebf1c516881c026032ac7deafcda1a2c9b7850dc81e3dfcb64c1",
+      "noticeFiles": [
+        "Rust/parking_lot_core-0.9.12/LICENSE-APACHE",
+        "Rust/parking_lot_core-0.9.12/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "pin-project-lite",
+      "version": "0.2.17",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/taiki-e/pin-project-lite",
+      "archiveSHA256": "a89322df9ebe1c1578d689c92318e070967d1042b512afbe49518723f4e6d5cd",
+      "noticeFiles": [
+        "Rust/pin-project-lite-0.2.17/LICENSE-APACHE",
+        "Rust/pin-project-lite-0.2.17/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "pkg-config",
+      "version": "0.3.34",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/pkg-config-rs",
+      "archiveSHA256": "f6b464fbc74e149a392436b17d523f769e057cb6877f6a5c4618bc6f11800548",
+      "noticeFiles": [
+        "Rust/pkg-config-0.3.34/LICENSE-APACHE",
+        "Rust/pkg-config-0.3.34/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "plist",
+      "version": "1.10.3",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/ebarnard/rust-plist/",
+      "archiveSHA256": "327a4cb2ad49dc48adfdc9da89e22c64d488b508c67a044d71ba729e4521a285",
+      "noticeFiles": [
+        "Rust/plist-1.10.3/LICENCE"
+      ]
+    },
+    {
+      "name": "portable-atomic",
+      "version": "1.15.0",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/taiki-e/portable-atomic",
+      "archiveSHA256": "05c8b63e8d9609db387f0324918f81d68fe27748f084ef092fb35954d0539a85",
+      "noticeFiles": [
+        "Rust/portable-atomic-1.15.0/LICENSE-APACHE",
+        "Rust/portable-atomic-1.15.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "portable-atomic-util",
+      "version": "0.2.8",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/taiki-e/portable-atomic-util",
+      "archiveSHA256": "10ab3eb7f3becc3a1cbc4f2c6f20267996cfc1a6467a873763411b136a122715",
+      "noticeFiles": [
+        "Rust/portable-atomic-util-0.2.8/LICENSE-APACHE",
+        "Rust/portable-atomic-util-0.2.8/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "postcard",
+      "version": "1.1.3",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/jamesmunns/postcard",
+      "archiveSHA256": "6764c3b5dd454e283a30e6dfe78e9b31096d9e32036b5d1eaac7a6119ccb9a24",
+      "noticeFiles": [
+        "Rust/postcard-1.1.3/LICENSE-APACHE",
+        "Rust/postcard-1.1.3/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "powerfmt",
+      "version": "0.2.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/jhpratt/powerfmt",
+      "archiveSHA256": "4a6394b9e965e73d0a289ee54f589087e2c676aedf60885baf52c76b771e4958",
+      "noticeFiles": [
+        "Rust/powerfmt-0.2.1/LICENSE-Apache",
+        "Rust/powerfmt-0.2.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/proc-macro2",
+      "archiveSHA256": "985e7ec9bb745e6ce6535b544d84d6cd6f7ad8bd711c398938ae983b91a766d9",
+      "noticeFiles": [
+        "Rust/proc-macro2-1.0.107/LICENSE-APACHE",
+        "Rust/proc-macro2-1.0.107/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "quick-xml",
+      "version": "0.42.0",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/tafia/quick-xml",
+      "archiveSHA256": "41b1177fdf999d2321d3fb46ff47159d9c1fb9ad66a4879f8c50a0b504615e9b",
+      "noticeFiles": [
+        "Rust/quick-xml-0.42.0/LICENSE-MIT.md"
+      ]
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/quote",
+      "archiveSHA256": "1fbf4db142a473a8d80c26bbf18454ed458bf8d26c8219c331daecfdbd079001",
+      "noticeFiles": [
+        "Rust/quote-1.0.47/LICENSE-APACHE",
+        "Rust/quote-1.0.47/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "r-efi",
+      "version": "6.0.0",
+      "licenseDeclared": "MIT OR Apache-2.0 OR LGPL-2.1-or-later",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/r-efi/r-efi",
+      "archiveSHA256": "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf",
+      "noticeFiles": [
+        "Rust/r-efi-6.0.0/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "rayon",
+      "version": "1.12.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "archiveSHA256": "fb39b166781f92d482534ef4b4b1b2568f42613b53e5b6c160e24cfbfa30926d",
+      "noticeFiles": [
+        "Rust/rayon-1.12.0/LICENSE-APACHE",
+        "Rust/rayon-1.12.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "rayon-core",
+      "version": "1.13.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rayon-rs/rayon",
+      "archiveSHA256": "22e18b0f0062d30d4230b2e85ff77fdfe4326feb054b9783a3460d8435c8ab91",
+      "noticeFiles": [
+        "Rust/rayon-core-1.13.0/LICENSE-APACHE",
+        "Rust/rayon-core-1.13.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "redox_syscall",
+      "version": "0.5.18",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://gitlab.redox-os.org/redox-os/syscall",
+      "archiveSHA256": "ed2bf2547551a7053d6fdfafda3f938979645c44812fbfcda098faae3f1a362d",
+      "noticeFiles": [
+        "Rust/redox_syscall-0.5.18/LICENSE"
+      ]
+    },
+    {
+      "name": "regex",
+      "version": "1.13.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/regex",
+      "archiveSHA256": "f020237b6c8eed93db2e2cb53c00c60a8e1bc73da7d073199a1180401450218d",
+      "noticeFiles": [
+        "Rust/regex-1.13.1/LICENSE-APACHE",
+        "Rust/regex-1.13.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "regex-automata",
+      "version": "0.4.18",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/regex",
+      "archiveSHA256": "ad8553b9b26413251cbf30e620595c7a41b3887f03da04579c0e6b0d6a06b4b2",
+      "noticeFiles": [
+        "Rust/regex-automata-0.4.18/LICENSE-APACHE",
+        "Rust/regex-automata-0.4.18/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "regex-syntax",
+      "version": "0.8.11",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/regex",
+      "archiveSHA256": "d6f6ff9a378485b298a5286656da665ba74413d36db0979633275d2e708145d4",
+      "noticeFiles": [
+        "Rust/regex-syntax-0.8.11/LICENSE-APACHE",
+        "Rust/regex-syntax-0.8.11/LICENSE-MIT",
+        "Rust/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE"
+      ]
+    },
+    {
+      "name": "rustc-hash",
+      "version": "2.1.3",
+      "licenseDeclared": "Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/rust-lang/rustc-hash",
+      "archiveSHA256": "6b1e7f9a428571be2dc5bc0505c13fb6bf936822b894ec87abf8a08a4e51742d",
+      "noticeFiles": [
+        "Rust/rustc-hash-2.1.3/LICENSE-APACHE",
+        "Rust/rustc-hash-2.1.3/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "rustix",
+      "version": "1.1.6",
+      "licenseDeclared": "Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/bytecodealliance/rustix",
+      "archiveSHA256": "e5e76742e5294153d4dde1207dbec5bdd81eef6fabdc0d2118babadabfd858aa",
+      "noticeFiles": [
+        "Rust/rustix-1.1.6/COPYRIGHT",
+        "Rust/rustix-1.1.6/LICENSE-APACHE",
+        "Rust/rustix-1.1.6/LICENSE-Apache-2.0_WITH_LLVM-exception",
+        "Rust/rustix-1.1.6/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "scopeguard",
+      "version": "1.2.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/bluss/scopeguard",
+      "archiveSHA256": "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49",
+      "noticeFiles": [
+        "Rust/scopeguard-1.2.0/LICENSE-APACHE",
+        "Rust/scopeguard-1.2.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/serde-rs/serde",
+      "archiveSHA256": "4148590afebada386688f18773da617792bf2ef03ffc1e4cbd2b1d45b023e0ba",
+      "noticeFiles": [
+        "Rust/serde-1.0.229/LICENSE-APACHE",
+        "Rust/serde-1.0.229/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/serde-rs/serde",
+      "archiveSHA256": "67dca2c9c51e58a4791a4b1ed58308b39c64224d349a935ab5039aa360942a48",
+      "noticeFiles": [
+        "Rust/serde_core-1.0.229/LICENSE-APACHE",
+        "Rust/serde_core-1.0.229/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/serde-rs/serde",
+      "archiveSHA256": "e7a5d71263a5a7d47b41f6b3f06ba276f10cc18b0931f1799f710578e2309348",
+      "noticeFiles": [
+        "Rust/serde_derive-1.0.229/LICENSE-APACHE",
+        "Rust/serde_derive-1.0.229/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.154",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/serde-rs/json",
+      "archiveSHA256": "e7e9cc8b1b85264074fbcc02a88680c4096b1e47df8f739dceb03bf482f04bd6",
+      "noticeFiles": [
+        "Rust/serde_json-1.0.154/LICENSE-APACHE",
+        "Rust/serde_json-1.0.154/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "serde_repr",
+      "version": "0.1.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/serde-repr",
+      "archiveSHA256": "8d3b1629de253c70a0508c3899572da79ca359fdab27c7920ff00406df418906",
+      "noticeFiles": [
+        "Rust/serde_repr-0.1.21/LICENSE-APACHE",
+        "Rust/serde_repr-0.1.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "shlex",
+      "version": "2.0.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/comex/rust-shlex",
+      "archiveSHA256": "f8fadd59c855ef2080decdef8ff161eb6661b86933c9d82e5ba29dc602a55aba",
+      "noticeFiles": [
+        "Rust/shlex-2.0.1/LICENSE-APACHE",
+        "Rust/shlex-2.0.1/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "smallvec",
+      "version": "1.16.4",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/servo/rust-smallvec",
+      "archiveSHA256": "d0d5d4b1981b8bbbb7aed204cae5726d683d5d6ac7e74ec54122ea28f315e7c8",
+      "noticeFiles": [
+        "Rust/smallvec-1.16.4/LICENSE-APACHE",
+        "Rust/smallvec-1.16.4/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/syn",
+      "archiveSHA256": "872831b642d1a07999a962a351ed35b955ea2cfc8f3862091e2a240a84f17297",
+      "noticeFiles": [
+        "Rust/syn-2.0.119/LICENSE-APACHE",
+        "Rust/syn-2.0.119/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "syn",
+      "version": "3.0.9",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/syn",
+      "archiveSHA256": "d78c8dee4c7bf0e14673097256fed6142ce9d3b85a408189d07482442145823b",
+      "noticeFiles": [
+        "Rust/syn-3.0.9/LICENSE-APACHE",
+        "Rust/syn-3.0.9/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "tempfile",
+      "version": "3.27.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Stebalien/tempfile",
+      "archiveSHA256": "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd",
+      "noticeFiles": [
+        "Rust/tempfile-3.27.0/LICENSE-APACHE",
+        "Rust/tempfile-3.27.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "thin-vec",
+      "version": "0.2.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/mozilla/thin-vec",
+      "archiveSHA256": "d6a4b9ba8738cb4a4f399d37e266becfd475e75eb73425b87a05a2f2039ba63e",
+      "noticeFiles": [
+        "Rust/thin-vec-0.2.21/LICENSE-APACHE",
+        "Rust/thin-vec-0.2.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "archiveSHA256": "09e52cb86a36cede5cb101bf8908837b3e4c6e5e59fe7fd85c23fb56200d189e",
+      "noticeFiles": [
+        "Rust/thiserror-2.0.21/LICENSE-APACHE",
+        "Rust/thiserror-2.0.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/thiserror",
+      "archiveSHA256": "fe5197923287db20a58125f0bc85c062f7f2c892de97b18c356f9efb14b28524",
+      "noticeFiles": [
+        "Rust/thiserror-impl-2.0.21/LICENSE-APACHE",
+        "Rust/thiserror-impl-2.0.21/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "time",
+      "version": "0.3.55",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/time-rs/time",
+      "archiveSHA256": "cdb87b95ec50ddfa440816d227a17b2ccbdda963a316a727fda0fc4334f7d134",
+      "noticeFiles": [
+        "Rust/time-0.3.55/LICENSE-Apache",
+        "Rust/time-0.3.55/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "time-core",
+      "version": "0.1.9",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/time-rs/time",
+      "archiveSHA256": "9e1c906769ad99c88eaa54e728060edef082f8e358ff32030cb7c7d315e81109",
+      "noticeFiles": [
+        "Rust/time-core-0.1.9/LICENSE-Apache",
+        "Rust/time-core-0.1.9/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "time-macros",
+      "version": "0.2.32",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/time-rs/time",
+      "archiveSHA256": "7e689342a48d2ea927c87ea50cabf8594854bf940e9310208848d680d668ed85",
+      "noticeFiles": [
+        "Rust/time-macros-0.2.32/LICENSE-Apache",
+        "Rust/time-macros-0.2.32/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "tinyvec",
+      "version": "1.13.3",
+      "licenseDeclared": "Zlib OR Apache-2.0 OR MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Lokathor/tinyvec",
+      "archiveSHA256": "fd3ca314f692efd6c868f8408f53fe444634a845f96c028b97d35f6a1f79f0ee",
+      "noticeFiles": [
+        "Rust/tinyvec-1.13.3/LICENSE-APACHE.md",
+        "Rust/tinyvec-1.13.3/LICENSE-MIT.md",
+        "Rust/tinyvec-1.13.3/LICENSE-ZLIB.md"
+      ]
+    },
+    {
+      "name": "tracing",
+      "version": "0.1.44",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/tokio-rs/tracing",
+      "archiveSHA256": "63e71662fa4b2a2c3a26f570f037eb95bb1f85397f3cd8076caed2f026a6d100",
+      "noticeFiles": [
+        "Rust/tracing-0.1.44/LICENSE"
+      ]
+    },
+    {
+      "name": "tracing-attributes",
+      "version": "0.1.31",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/tokio-rs/tracing",
+      "archiveSHA256": "7490cfa5ec963746568740651ac6781f701c9c5ea257c58e057f3ba8cf69e8da",
+      "noticeFiles": [
+        "Rust/tracing-attributes-0.1.31/LICENSE"
+      ]
+    },
+    {
+      "name": "tracing-core",
+      "version": "0.1.36",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/tokio-rs/tracing",
+      "archiveSHA256": "db97caf9d906fbde555dd62fa95ddba9eecfd14cb388e4f491a66d74cd5fb79a",
+      "noticeFiles": [
+        "Rust/tracing-core-0.1.36/LICENSE",
+        "Rust/tracing-core-0.1.36/src/spin/LICENSE"
+      ]
+    },
+    {
+      "name": "typed-num",
+      "version": "0.3.0",
+      "licenseDeclared": "WTFPL",
+      "licenseSelected": "WTFPL",
+      "repository": "https://github.com/ldm0/typed-num",
+      "archiveSHA256": "de97285b9f977c998caea1a10d20484ddaf3938a2f224c59f7c2bf3a8d19b7f9",
+      "noticeFiles": [
+        "Rust/typed-num-0.3.0/COPYING.WTFPL",
+        "Rust/typed-num-0.3.0/SOURCE-NOTICE.txt"
+      ]
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "licenseDeclared": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "licenseSelected": "MIT AND Unicode-3.0",
+      "repository": "https://github.com/dtolnay/unicode-ident",
+      "archiveSHA256": "a2c754d6c33795a1c324727428e5a7dedb5b06195f9890bdbcba760d3e246563",
+      "noticeFiles": [
+        "Rust/unicode-ident-1.0.27/LICENSE-APACHE",
+        "Rust/unicode-ident-1.0.27/LICENSE-MIT",
+        "Rust/unicode-ident-1.0.27/LICENSE-UNICODE"
+      ]
+    },
+    {
+      "name": "unicode-normalization",
+      "version": "0.1.26",
+      "licenseDeclared": "(MIT OR Apache-2.0) AND Unicode-3.0",
+      "licenseSelected": "MIT AND Unicode-3.0",
+      "repository": "https://github.com/unicode-rs/unicode-normalization",
+      "archiveSHA256": "75cd3fb03d5288b3ba9a1ee103ac7e9cbb59f0b03d64f8ddfcc04dd42758a85d",
+      "noticeFiles": [
+        "Rust/unicode-normalization-0.1.26/COPYRIGHT",
+        "Rust/unicode-normalization-0.1.26/LICENSE-APACHE",
+        "Rust/unicode-normalization-0.1.26/LICENSE-MIT",
+        "Rust/unicode-normalization-0.1.26/LICENSE-UNICODE"
+      ]
+    },
+    {
+      "name": "windows-link",
+      "version": "0.2.1",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "archiveSHA256": "f0805222e57f7521d6a62e36fa9163bc891acd422f971defe97d64e70d0a4fe5",
+      "noticeFiles": [
+        "Rust/windows-link-0.2.1/license-apache-2.0",
+        "Rust/windows-link-0.2.1/license-mit"
+      ]
+    },
+    {
+      "name": "windows-sys",
+      "version": "0.61.2",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/microsoft/windows-rs",
+      "archiveSHA256": "ae137229bcbd6cdf0f7b80a31df61766145077ddf49416a728b02cb3921ff3fc",
+      "noticeFiles": [
+        "Rust/windows-sys-0.61.2/license-apache-2.0",
+        "Rust/windows-sys-0.61.2/license-mit"
+      ]
+    },
+    {
+      "name": "xattr",
+      "version": "1.7.0",
+      "licenseDeclared": "MIT OR Apache-2.0",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/Stebalien/xattr",
+      "archiveSHA256": "963d6fab92d5504b971dc8bd90ca743c2575e590bc8071ea5bc571598667ae08",
+      "noticeFiles": [
+        "Rust/xattr-1.7.0/LICENSE-APACHE",
+        "Rust/xattr-1.7.0/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "licenseDeclared": "MIT",
+      "licenseSelected": "MIT",
+      "repository": "https://github.com/dtolnay/zmij",
+      "archiveSHA256": "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b",
+      "noticeFiles": [
+        "Rust/zmij-1.0.23/LICENSE-MIT"
+      ]
+    },
+    {
+      "name": "zstd",
+      "version": "0.14.3",
+      "licenseDeclared": "BSD-3-Clause",
+      "licenseSelected": "BSD-3-Clause",
+      "repository": "https://github.com/gyscos/zstd-rs",
+      "archiveSHA256": "db3ae9bf90af6e40197bef767eeefc46ad6397420fe873830bd85e5fbbfb3c70",
+      "noticeFiles": [
+        "Rust/zstd-0.14.3/LICENSE"
+      ]
+    },
+    {
+      "name": "zstd-safe",
+      "version": "8.2.0",
+      "licenseDeclared": "BSD-3-Clause",
+      "licenseSelected": "BSD-3-Clause",
+      "repository": "https://github.com/gyscos/zstd-rs",
+      "archiveSHA256": "ded520f16b29e1a9b771c722221b2b0a0398c2316d9bb3c42b458a5414d7434b",
+      "noticeFiles": [
+        "Rust/zstd-safe-8.2.0/LICENSE"
+      ]
+    },
+    {
+      "name": "zstd-sys",
+      "version": "2.1.2+zstd.1.5.7",
+      "licenseDeclared": "BSD-3-Clause",
+      "licenseSelected": "BSD-3-Clause",
+      "repository": "https://github.com/gyscos/zstd-rs",
+      "archiveSHA256": "481ada9c543b2323cbb7bbdbb5249177fbf0188ed959ed2c15e4b22421c84ed3",
+      "noticeFiles": [
+        "Rust/zstd-sys-2.1.2+zstd.1.5.7/LICENSE",
+        "Rust/zstd-sys-2.1.2+zstd.1.5.7/LICENSE.BSD-3-Clause",
+        "Rust/zstd-sys-2.1.2+zstd.1.5.7/XXHASH-SOURCE-NOTICE.txt",
+        "Rust/zstd-sys-2.1.2+zstd.1.5.7/zstd/COPYING",
+        "Rust/zstd-sys-2.1.2+zstd.1.5.7/zstd/LICENSE"
+      ]
+    }
+  ],
+  "noticeSHA256": {
+    "Cardinal-MIT.txt": "fe3e8ad2e68b17780f0689544459a431ba07cb83ef4ec7fe868e6f6bb5169288",
+    "THIRD_PARTY_NOTICES.md": "6f3dca28ddbaed9b914b649cb7652628cdf3abf25a8104e460bc947d2810c4b2",
+    "WindowNest-MIT.txt": "c5f0b09dbd6a58df6186af13b25650b70ef612e06c8c8c5d4d5efbe0fa451846",
+    "Amethyst-MIT.txt": "f10949bc8b2c28d68a97282cfa5e3d212ebfda1e451a911de1c21786e215fa2d",
+    "LRUCache-MIT.txt": "cc59ff976bc639612b7f2e92c6ecfad42e93b70099c7b950acd1b3651def10ab",
+    "Lucide-ISC-MIT.txt": "b495047bd93a9b06913511076f504daba17d5bbeb3e0650f3bb53a4220329c57",
+    "RustStandardLibrary/LLVM-exception.txt": "e34c58338bd89d43e709e226610d8f32b3e3c47f4ad9a99a8dc1d4ac7842488e",
+    "RustStandardLibrary/BSD-2-Clause.txt": "f32fb3b417a194167cfad068223fc975ba96c5960513a10f66a3c28720aec1df",
+    "RustStandardLibrary/SOURCE.txt": "90d722f1b4f24d001d5e4835fa321572abbd3b35c88e32ff1cc32b615fb33885",
+    "RustStandardLibrary/Unicode-3.0.txt": "f5062c9a188d81dfe66b56db4182dcf9e4b17c0d9b0d311a8e20b3a1b075c443",
+    "RustStandardLibrary/COPYRIGHT-library.txt": "8a625e29c3e848b3f8dc82f43f69e1248d06925ae37a51930131aede19c78874",
+    "RustStandardLibrary/MIT.txt": "b85dcd3e453d05982552c52b5fc9e0bdd6d23c6f8e844b984a88af32570b0cc0",
+    "RustStandardLibrary/COPYRIGHT-library.html": "c12ee4583aa62ffc19e779d994d5cda9a9400d86701ecd88c43e59bb2084cb43",
+    "RustStandardLibrary/Apache-2.0.txt": "074e6e32c86a4c0ef8b3ed25b721ca23aca83df277cd88106ef7177c354615ff",
+    "Rust/powerfmt-0.2.1/LICENSE-Apache": "155420c6403d4e0fca34105e3c03fdd6939b64c393c7ec6f95f5b72c5474eab0",
+    "Rust/powerfmt-0.2.1/LICENSE-MIT": "070dbc7dda03a29296f2d58bdb9b7331af90f2abc9f31df22875d1eabaf29852",
+    "Rust/tinyvec-1.13.3/LICENSE-MIT.md": "fd80a26fbb3f644af1fa994134446702932968519797227e07a1368dea80f0bc",
+    "Rust/tinyvec-1.13.3/LICENSE-ZLIB.md": "84b34dd7608f7fb9b17bd588a6bf392bf7de504e2716f024a77d89f1b145a151",
+    "Rust/tinyvec-1.13.3/LICENSE-APACHE.md": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "Rust/getrandom-0.4.3/LICENSE-APACHE": "aaff376532ea30a0cd5330b9502ad4a4c8bf769c539c87ffe78819d188a18ebf",
+    "Rust/getrandom-0.4.3/LICENSE-MIT": "523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d9b2cd5419b",
+    "Rust/cobs-0.3.0/LICENSE-APACHE": "c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec56bd92ba08",
+    "Rust/cobs-0.3.0/LICENSE-MIT": "e0cfa1006a64520633de6bfbf563f5b1bea04ef0c5b73f049681931fa297dda3",
+    "Rust/linux-raw-sys-0.12.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/linux-raw-sys-0.12.1/LICENSE-Apache-2.0_WITH_LLVM-exception": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+    "Rust/linux-raw-sys-0.12.1/COPYRIGHT": "3290ae0fbc9ddb77d2239121d710f0bb9d31b3b4744e6d97fe01e652b4c1870b",
+    "Rust/linux-raw-sys-0.12.1/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/cfg-if-1.0.5/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/cfg-if-1.0.5/LICENSE-MIT": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "Rust/num-conv-0.2.2/LICENSE-Apache": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/num-conv-0.2.2/LICENSE-MIT": "e2e245f2b566d0bfafb0f6a04c16b82d710c4e6e7d799e39bb4ef6e541b85b98",
+    "Rust/once_cell-1.21.4/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/once_cell-1.21.4/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/cc-1.11.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/cc-1.11.0/LICENSE-MIT": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "Rust/quick-xml-0.42.0/LICENSE-MIT.md": "f0cf9b1c62bbe3bd3a69f5f79c7158f513f612b4940a0a812d1db39d605318bc",
+    "Rust/serde_derive-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/serde_derive-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/find-msvc-tools-0.1.15/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/find-msvc-tools-0.1.15/LICENSE-MIT": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "Rust/log-0.4.35/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/log-0.4.35/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/hashbrown-0.16.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/hashbrown-0.16.1/LICENSE-MIT": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+    "Rust/objc2-core-services-0.3.2/SOURCE-NOTICE.txt": "a18bbe8c552aa54d10d1c27d212b3576b2b1f305a78d293faffe10b54fb037c0",
+    "Rust/anyhow-1.0.104/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/anyhow-1.0.104/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/lock_api-0.4.14/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/lock_api-0.4.14/LICENSE-MIT": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+    "Rust/block2-0.6.2/SOURCE-NOTICE.txt": "73b5d97e40e90b20ac57750360fb9e1afa268ac18149fd8e93eae168e1098d1c",
+    "Rust/tracing-attributes-0.1.31/LICENSE": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1",
+    "Rust/tracing-core-0.1.36/LICENSE": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1",
+    "Rust/tracing-core-0.1.36/src/spin/LICENSE": "58545fed1565e42d687aecec6897d35c6d37ccb71479a137c0deb2203e125c79",
+    "Rust/r-efi-6.0.0/SOURCE-NOTICE.txt": "7439f1c697a966fe1704768b582bde2f9e385b9e20ffcf547c3d23f3463e4579",
+    "Rust/zstd-0.14.3/LICENSE": "ce4868c8e4ebe47a7d4b3c93dbf6b802033e5ae2fa7638098173f80836daac60",
+    "Rust/time-0.3.55/LICENSE-Apache": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/time-0.3.55/LICENSE-MIT": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc",
+    "Rust/thiserror-2.0.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/thiserror-2.0.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/bitflags-2.13.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/bitflags-2.13.2/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/embedded-io-0.6.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/embedded-io-0.6.1/LICENSE-MIT": "47674f8b7d98c232c6f81346c4cfe48933d913a9e257d7a522ad9f42e3dd61e1",
+    "Rust/redox_syscall-0.5.18/LICENSE": "efcfee7981ff72431fffb06925cad00a23dce079ed4354f61030ad5abdb78829",
+    "Rust/zstd-safe-8.2.0/LICENSE": "ce4868c8e4ebe47a7d4b3c93dbf6b802033e5ae2fa7638098173f80836daac60",
+    "Rust/regex-1.13.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/regex-1.13.1/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/crossbeam-channel-0.5.17/LICENSE-THIRD-PARTY": "b16db96b93b1d7cf7bea533f572091ec6bca3234fbe0a83038be772ff391a44c",
+    "Rust/crossbeam-channel-0.5.17/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/crossbeam-channel-0.5.17/LICENSE-MIT": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
+    "Rust/smallvec-1.16.4/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/smallvec-1.16.4/LICENSE-MIT": "0b28172679e0009b655da42797c03fd163a3379d5cfa67ba1f1655e974a2a1a9",
+    "Rust/portable-atomic-1.15.0/LICENSE-APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/portable-atomic-1.15.0/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/crossbeam-epoch-0.9.21/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/crossbeam-epoch-0.9.21/LICENSE-MIT": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
+    "Rust/errno-0.3.14/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/errno-0.3.14/LICENSE-MIT": "8764a597675778ddfd4e25f81b08a05dbcf089ac05662df7613fe67f150e3aa2",
+    "Rust/time-macros-0.2.32/LICENSE-Apache": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/time-macros-0.2.32/LICENSE-MIT": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc",
+    "Rust/thiserror-impl-2.0.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/thiserror-impl-2.0.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/pkg-config-0.3.34/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/pkg-config-0.3.34/LICENSE-MIT": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "Rust/parking_lot_core-0.9.12/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/parking_lot_core-0.9.12/LICENSE-MIT": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+    "Rust/serde-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/serde-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/proc-macro2-1.0.107/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/proc-macro2-1.0.107/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/windows-sys-0.61.2/license-apache-2.0": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+    "Rust/windows-sys-0.61.2/license-mit": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "Rust/rustix-1.1.6/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/rustix-1.1.6/LICENSE-Apache-2.0_WITH_LLVM-exception": "268872b9816f90fd8e85db5a28d33f8150ebb8dd016653fb39ef1f94f2686bc5",
+    "Rust/rustix-1.1.6/COPYRIGHT": "377c2e7c53250cc5905c0b0532d35973392af16ffb9596a41d99d202cf3617c9",
+    "Rust/rustix-1.1.6/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/itoa-1.0.18/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/itoa-1.0.18/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/objc2-0.6.5/SOURCE-NOTICE.txt": "9154875c60f711dad83eeba2dc3b52dfcbaa81f8c2b726250709114d2c79e1d5",
+    "Rust/tracing-0.1.44/LICENSE": "898b1ae9821e98daf8964c8d6c7f61641f5f5aa78ad500020771c0939ee0dea1",
+    "Rust/rayon-1.12.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/rayon-1.12.0/LICENSE-MIT": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
+    "Rust/defmt-1.2.0/LICENSE-APACHE": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+    "Rust/defmt-1.2.0/LICENSE-MIT": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+    "Rust/indexmap-2.14.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/indexmap-2.14.2/LICENSE-MIT": "ecc269ef87fd38a1d98e30bfac9ba964a9dbd9315c3770fed98d4d7cb5882055",
+    "Rust/jiff-static-0.2.39/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/jiff-static-0.2.39/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/jiff-static-0.2.39/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/aho-corasick-1.1.5/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/aho-corasick-1.1.5/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/aho-corasick-1.1.5/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/regex-automata-0.4.18/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/regex-automata-0.4.18/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/portable-atomic-util-0.2.8/LICENSE-APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/portable-atomic-util-0.2.8/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/regex-syntax-0.8.11/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/regex-syntax-0.8.11/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/regex-syntax-0.8.11/src/unicode_tables/LICENSE-UNICODE": "74db5baf44a41b1000312c673544b3374e4198af5605c7f9080a402cec42cfa3",
+    "Rust/scopeguard-1.2.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/scopeguard-1.2.0/LICENSE-MIT": "fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7",
+    "Rust/memmap2-0.9.12/LICENSE-APACHE": "04ea4849dba9dcae07113850c6f1b1a69052c625210639914eee352023f750ad",
+    "Rust/memmap2-0.9.12/LICENSE-MIT": "0d25d03b5ab49576178ad0cae7a2648d12c17ad0452fe49c07e55e4b59aa5257",
+    "Rust/crossbeam-deque-0.8.8/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/crossbeam-deque-0.8.8/LICENSE-MIT": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
+    "Rust/either-1.19.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/either-1.19.0/LICENSE-MIT": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+    "Rust/serde_json-1.0.154/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/serde_json-1.0.154/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/foldhash-0.2.0/LICENSE": "b1181a40b2a7b25cf66fd01481713bc1005df082c53ef73e851e55071b102744",
+    "Rust/unicode-ident-1.0.27/LICENSE-UNICODE": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+    "Rust/unicode-ident-1.0.27/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/unicode-ident-1.0.27/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/fastrand-2.5.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/fastrand-2.5.0/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/serde_repr-0.1.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/serde_repr-0.1.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/embedded-io-0.4.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/embedded-io-0.4.0/LICENSE-MIT": "423e1c4900b3fbb41cda3e34530b2597d50c2e61473e18c085756c507e46fe1c",
+    "Rust/dispatch2-0.3.1/SOURCE-NOTICE.txt": "5d6e95fc84e1bdb5c9135e73691dbc4c6b5b121604a0916ebf1ca32585107243",
+    "Rust/enumn-0.1.14/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/enumn-0.1.14/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/deranged-0.5.9/LICENSE-Apache": "edd65bdd88957a205c47d53fa499eed8865a70320f0f03f6391668cb304ea376",
+    "Rust/deranged-0.5.9/LICENSE-MIT": "231c837c45eb53f108fb48929e488965bc4fcc14e9ea21d35f50e6b99d98685b",
+    "Rust/itertools-0.14.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/itertools-0.14.0/LICENSE-MIT": "7576269ea71f767b99297934c0b2367532690f8c4badc695edf8e04ab6a1e545",
+    "Rust/thin-vec-0.2.21/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/thin-vec-0.2.21/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/defmt-macros-1.2.0/LICENSE-APACHE": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+    "Rust/defmt-macros-1.2.0/LICENSE-MIT": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+    "Rust/pin-project-lite-0.2.17/LICENSE-APACHE": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/pin-project-lite-0.2.17/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/rayon-core-1.13.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/rayon-core-1.13.0/LICENSE-MIT": "0621878e61f0d0fda054bcbe02df75192c28bde1ecc8289cbd86aeba2dd72720",
+    "Rust/jiff-tzdb-0.1.9/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/jiff-tzdb-0.1.9/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/jiff-tzdb-0.1.9/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/typed-num-0.3.0/COPYING.WTFPL": "e2c8a8cb39aa9bb6ee258d61eaa7de5a5a18ee11c5d4aa3d16ab6f6e5d59f176",
+    "Rust/typed-num-0.3.0/SOURCE-NOTICE.txt": "c77c3962b08dc9b33fe2f758e3cae12b9b269775a0c24334299bfd9ff8d85b02",
+    "Rust/postcard-1.1.3/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/postcard-1.1.3/LICENSE-MIT": "177540cad091a40e8071db310bc3b6115c4e329a92a234609b60c154b008a888",
+    "Rust/unicode-normalization-0.1.26/LICENSE-UNICODE": "f7db81051789b729fea528a63ec4c938fdcb93d9d61d97dc8cc2e9df6d47f2a1",
+    "Rust/unicode-normalization-0.1.26/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/unicode-normalization-0.1.26/COPYRIGHT": "23860c2a7b5d96b21569afedf033469bab9fe14a1b24a35068b8641c578ce24d",
+    "Rust/unicode-normalization-0.1.26/LICENSE-MIT": "7b63ecd5f1902af1b63729947373683c32745c16a10e8e6292e2e2dcd7e90ae0",
+    "Rust/libc-0.2.191/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/libc-0.2.191/LICENSE-MIT": "123a331b5dbf04c30097fa43b8f858bc85df671fe776de498d01f3d6b7c1f69e",
+    "Rust/defmt-parser-1.1.0/LICENSE-APACHE": "8173d5c29b4f956d532781d2b86e4e30f83e6b7878dce18c919451d6ba707c90",
+    "Rust/defmt-parser-1.1.0/LICENSE-MIT": "2710a622a896bba67356913d4d0492cab5465f61b2ecce6d880aeb483834fb50",
+    "Rust/windows-link-0.2.1/license-apache-2.0": "c16f8dcf1a368b83be78d826ea23de4079fe1b4469a0ab9ee20563f37ff3d44b",
+    "Rust/windows-link-0.2.1/license-mit": "c2cfccb812fe482101a8f04597dfc5a9991a6b2748266c47ac91b6a5aae15383",
+    "Rust/bitflags-1.3.2/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/bitflags-1.3.2/LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "Rust/allocator-api2-0.2.21/LICENSE-APACHE": "20fe7b00e904ed690e3b9fd6073784d3fc428141dbd10b81c01fd143d0797f58",
+    "Rust/allocator-api2-0.2.21/LICENSE-MIT": "36516aefdc84c5d5a1e7485425913a22dbda69eb1930c5e84d6ae4972b5194b9",
+    "Rust/jobserver-0.1.35/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/jobserver-0.1.35/LICENSE-MIT": "378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397",
+    "Rust/equivalent-1.0.3/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/equivalent-1.0.3/LICENSE-MIT": "7365cc8878a1d7ce155a58c4ca09c3d7a6be413efa5334a80ea842912b669349",
+    "Rust/quote-1.0.47/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/quote-1.0.47/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/shlex-2.0.1/LICENSE-APACHE": "553fffcd9b1cb158bc3e9edc35da85ca5c3b3d7d2e61c883ebcfa8a65814b583",
+    "Rust/shlex-2.0.1/LICENSE-MIT": "4455bf75a91154108304cb283e0fea9948c14f13e20d60887cf2552449dea3b1",
+    "Rust/jiff-tzdb-platform-0.1.3/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/jiff-tzdb-platform-0.1.3/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/jiff-tzdb-platform-0.1.3/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/crossbeam-utils-0.8.23/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/crossbeam-utils-0.8.23/LICENSE-MIT": "5734ed989dfca1f625b40281ee9f4530f91b2411ec01cb748223e7eb87e201ab",
+    "Rust/base64-0.23.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/base64-0.23.1/LICENSE-MIT": "ab499c75a0f0da8e0fe83bf9ba3a27e5c39705310f07107c6c66b69958d2401c",
+    "Rust/time-core-0.1.9/LICENSE-Apache": "0d542e0c8804e39aa7f37eb00da5a762149dc682d7829451287e11b938e94594",
+    "Rust/time-core-0.1.9/LICENSE-MIT": "2537228d9a1b44a5dc595241349cae7090b326c8de165aaf89bfddef4a00d0fc",
+    "Rust/parking_lot-0.12.5/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/parking_lot-0.12.5/LICENSE-MIT": "c9a75f18b9ab2927829a208fc6aa2cf4e63b8420887ba29cdb265d6619ae82d5",
+    "Rust/hashbrown-0.17.1/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/hashbrown-0.17.1/LICENSE-MIT": "ff8f68cb076caf8cefe7a6430d4ac086ce6af2ca8ce2c4e5a2004d4552ef52a2",
+    "Rust/syn-2.0.119/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/syn-2.0.119/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/xattr-1.7.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/xattr-1.7.0/LICENSE-MIT": "8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36",
+    "Rust/rustc-hash-2.1.3/LICENSE-APACHE": "95bd3988beee069fa2848f648dab43cc6e0b2add2ad6bcb17360caf749802bcc",
+    "Rust/rustc-hash-2.1.3/LICENSE-MIT": "30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652",
+    "Rust/jiff-0.2.39/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/jiff-0.2.39/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/jiff-0.2.39/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/tempfile-3.27.0/LICENSE-APACHE": "a60eea817514531668d7e00765731449fe14d059d3249e0bc93b36de45f759f2",
+    "Rust/tempfile-3.27.0/LICENSE-MIT": "8b427f5bc501764575e52ba4f9d95673cf8f6d80a86d0d06599852e1a9a20a36",
+    "Rust/jiff-core-0.1.2/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/jiff-core-0.1.2/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/jiff-core-0.1.2/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/objc2-encode-4.1.0/SOURCE-NOTICE.txt": "1bb6a6f37e59a28519fb50db186f672c16fe428d904dd6ccd5f034271375d54b",
+    "Rust/memchr-2.8.3/COPYING": "01c266bced4a434da0051174d6bee16a4c82cf634e2679b6155d40d75012390f",
+    "Rust/memchr-2.8.3/UNLICENSE": "7e12e5df4bae12cb21581ba157ced20e1986a0508dd10d0e8a4ab9a4cf94e85c",
+    "Rust/memchr-2.8.3/LICENSE-MIT": "0f96a83840e146e43c0ec96a22ec1f392e0680e6c1226e6f3ba87e0740af850f",
+    "Rust/syn-3.0.9/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/syn-3.0.9/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/zstd-sys-2.1.2+zstd.1.5.7/LICENSE": "ce4868c8e4ebe47a7d4b3c93dbf6b802033e5ae2fa7638098173f80836daac60",
+    "Rust/zstd-sys-2.1.2+zstd.1.5.7/XXHASH-SOURCE-NOTICE.txt": "09bbb64b8271473be30f89866b8bc626800d67800cbb28c6720cbd9cdd1076df",
+    "Rust/zstd-sys-2.1.2+zstd.1.5.7/LICENSE.BSD-3-Clause": "bf7017a73a95ea63bf3716b13ec2bcd79c92942356e3408c6fb66332bad6d977",
+    "Rust/zstd-sys-2.1.2+zstd.1.5.7/zstd/LICENSE": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+    "Rust/zstd-sys-2.1.2+zstd.1.5.7/zstd/COPYING": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+    "Rust/zmij-1.0.23/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3",
+    "Rust/plist-1.10.3/LICENCE": "5b0ae40d1a35f7ae6591a28e44771240e6a88cb03a66c9189a45b9681639b466",
+    "Rust/objc2-core-foundation-0.3.2/SOURCE-NOTICE.txt": "7a1f204a9bd58a9cbf83db87f8f1dbda6792b79d62cca4ba1918f74a21fa3cde",
+    "Rust/serde_core-1.0.229/LICENSE-APACHE": "62c7a1e35f56406896d7aa7ca52d0cc0d272ac022b5d2796e7d6905db8a3636a",
+    "Rust/serde_core-1.0.229/LICENSE-MIT": "23f18e03dc49df91622fe2a76176497404e46ced8a715d9d2b67a7446571cca3"
+  },
+  "fileTypePNGSHA256": {
+    "heic.png": "3b4af737362f7f73da1799c2f882f0180cba2cdeea6675c1b474ff684d5151a0",
+    "md.png": "2ac2a615d63cdd65d9183f144ed97629b67b41024ab7a49a8d4169d06a38a141",
+    "gif.png": "279e803d748b6069ffde897fdca10bdd862c3020a7e0abd06a68c8d63ec787f9",
+    "psd.png": "5607b29f7fd0f84de9400ee6a6a1d0f63caf50c151b30e4d1e43448a694bcb4f",
+    "key.png": "a625a673c1f998f1054728457385a67a42f94efb6fa3d8379687248c25af425e",
+    "json.png": "046bd785a5c5dcfb05c5dd24299a80c037062edd65fc91fcec82093b85e4c6a2",
+    "wav.png": "093313ec645ed1de101c5a655221e2310e1ff5b7578277284e0be211a57af5f1",
+    "zip.png": "e5ec32b2d3b1e5c8d0d5a7169699e979acf91d3bff7665455a7544e9388b3c61",
+    "doc.png": "529253bb05d6a3cd21d26dceeef710e49590ecbc30cb280311d846901b7e6672",
+    "tiff.png": "842d9c85484ee9ed5676a90aaa30fbe1790726ce6e49f278b8c328fd23a06d34",
+    "tar.png": "150d50675aa55a736ec89a762c54c76e88dd4b93f02184174036dd58257e16bd",
+    "py.png": "1bab6d8ff11bd0ee2a4f24bc7f1e3bb5b9ff9a8a6473a12a9d907d6761edfe35",
+    "js.png": "577886433d7450f47bbc655be5d22d28ec502fe82282c96316174fadf3041162",
+    "xml.png": "a6928b7c30553a1d355e6b1c09348877b6d1fc6ff89890259b2bd547f49ad77f",
+    "rar.png": "9e547b43a918f3fe32115bac33700377b959f835374bbdbfa80ccfe756afcc87",
+    "docx.png": "c0a533dd96df9a8971ea244d68c55492a6299291c69cdaa4d5a57af606cf50e1",
+    "txt.png": "5355afd7cc7913e198d6f3eb9abe67228c3b4bbe6ce15b50edc8f8af4d5305bf",
+    "rtf.png": "0d8c95cf932936c3959cd5f32a292d87fca37be749e78e7d95f851cc2355f15e",
+    "png.png": "6ed346796ee8eb7b0e20326b81ea78d88e7200e05c45519405f8ae04c639097b",
+    "gz.png": "3e2e2a7a47db57eb32031eb0a73111bb5e61dc507c172c6336820fc413c7173a",
+    "xls.png": "d1b34d3f4ebf2dca634e6dde0c755dccd6a3c26fafdf7ac452f06e27cf4d01d5",
+    "pptx.png": "92a3c43a610d2d896c6c9f685414e4e36ab5999b5f1548c313ed0c06febbf488",
+    "html.png": "a0f7d0a4cc3c7b9c42b8b7ea2159b66e2e1fd50fa6b6355851065d08f248802f",
+    "jpg.png": "078427ae1f3cf3e8eeea4950da2c90c9ca6c9a60d0a8806287dbb292ed77172c",
+    "mov.png": "bc623298a6a17fe46e30a65ce95a4c5f7ec7597749d096f9314c0392ffa5e0ce",
+    "mp3.png": "a62d4a846b386865f40c5e6895137c92557fe5546ef37518e6cac78c1366a679",
+    "pdf.png": "d20b7e90fb53b19a0487aeb0eb8f27b7b3cd1c7864a7e5db240a931a28910ae1",
+    "ppt.png": "b7fe93047999850ea7e955f403fea2de4d4598e83b48ffbf6eabe1c5518f364d",
+    "epub.png": "faabf1080611ca62de9335af2da8eab624082989a5bf1b5c6fb207475305b8ca",
+    "css.png": "6339e149b664e61b6431c9de55a8cd8cdbc67a1de449bea500c11c0f351c4e78",
+    "svg.png": "915cc8a0b81dfec29ee06a8d94149591d07b2dcf415d9aced32569faf3ab5a58",
+    "ai.png": "21500984da7b844ff6be19750ebdba7df37a968ee0468405460a72233961ba62",
+    "bmp.png": "6fbd7ad713c08fbe6300b7e05b215179efe2d134c1f99d45e8703a2318663b3c",
+    "mp4.png": "1d6f3f1e270a3fec771f15d3ddadb2f75928d8bc294d4f2bbfa8033a4ace1425",
+    "xlsx.png": "02b1dcbe05d02fd4d347f4c304e97cba0226f27b5732b64357970480f08fb1dd",
+    "csv.png": "00eaf3b96265cfc6e99ffe99a5120ab0fc92f4b53506082e2bfbc59f222ed061",
+    "7z.png": "dcfaecb43c1f37481bd9fd8ed50d7da7db3076546c30c43a56cb5198eefc440f",
+    "image.png": "c350ba90e1ae11f801a009a87b039002539667f4e6b73062f4b8289bbeaa302d",
+    "pages.png": "3eef5117e4e00a7af3ca0bd6f3e6ff2c6f8edf21c7dd19b6a39961911a20495e"
+  },
+  "svgSourceSHA256": {
+    "Vendor/Lucide/file-video-camera.svg": "a1496d106b1d0d62da11f85fc36707924ff8c340b26083161959724c4c8acc3c",
+    "Vendor/Lucide/file.svg": "499039795d7412d67664ff79d2eb6b7412e746b24c18c8fd8aba383c24ddada0",
+    "Vendor/Lucide/file-text.svg": "52ca55846c202335fb870c8aa23e9345630ec10489303756d62e750f7109605c",
+    "Vendor/Lucide/file-spreadsheet.svg": "69960bb43dec3b66f0d1c2dd26c2f637a10540b8bea4ffb90f8764a8404016a0",
+    "Vendor/Lucide/file-chart-column.svg": "7d3798a02beb8d13bb629d073b753b0a1909086fc6ebefcf5467d6264339d1fa",
+    "Vendor/Lucide/file-image.svg": "82a9140926814aa4287fb6f4b479da6f99e752ebde557e19ffb066a239eab2f9",
+    "Vendor/Lucide/file-archive.svg": "203682f219d2f51c1a9e43c9b74c045ceae1b4f72c016a11e3670edee6725999",
+    "Vendor/Lucide/file-music.svg": "3590a42fac78e9d87e28062cf5572ddb963ba501b197c983033745cad0793954",
+    "Vendor/Lucide/file-code.svg": "8ac619671f53653a483c2d5e2e6afe6d009c3198918cf76632e2cb4abf0d6721"
+  },
+  "projectLicense": {
+    "name": "WindowNest",
+    "license": "MIT",
+    "copyright": "Copyright (c) 2026 WindowNest Contributors",
+    "ownerChoiceDate": "2026-11-19",
+    "licenseFile": "WindowNest-MIT.txt"
+  },
+  "rustStandardLibrary": {
+    "toolchain": "nightly-2025-12-11",
+    "repository": "https://github.com/rust-lang/rust",
+    "licenseDeclared": "MIT OR Apache-2.0, with per-file exceptions retained in official library notice",
+    "noticeFiles": [
+      "RustStandardLibrary/LLVM-exception.txt",
+      "RustStandardLibrary/BSD-2-Clause.txt",
+      "RustStandardLibrary/SOURCE.txt",
+      "RustStandardLibrary/Unicode-3.0.txt",
+      "RustStandardLibrary/COPYRIGHT-library.txt",
+      "RustStandardLibrary/MIT.txt",
+      "RustStandardLibrary/COPYRIGHT-library.html",
+      "RustStandardLibrary/Apache-2.0.txt"
+    ]
+  }
+}

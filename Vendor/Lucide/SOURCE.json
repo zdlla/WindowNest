@@ -1,0 +1,53 @@
+{
+  "repository": "https://github.com/lucide-icons/lucide",
+  "retrieved": "2026-11-19",
+  "license": "ISC; Feather-derived portions MIT (full upstream license retained)",
+  "modifications": "Source SVG geometry retained. PNG generation tints strokes, fills the document outline white, and adds locally drawn extension badges; no brand logos.",
+  "files": [
+    {
+      "file": "file-archive.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-archive.svg",
+      "sha256": "203682f219d2f51c1a9e43c9b74c045ceae1b4f72c016a11e3670edee6725999"
+    },
+    {
+      "file": "file-chart-column.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-chart-column.svg",
+      "sha256": "7d3798a02beb8d13bb629d073b753b0a1909086fc6ebefcf5467d6264339d1fa"
+    },
+    {
+      "file": "file-code.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-code.svg",
+      "sha256": "8ac619671f53653a483c2d5e2e6afe6d009c3198918cf76632e2cb4abf0d6721"
+    },
+    {
+      "file": "file-image.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-image.svg",
+      "sha256": "82a9140926814aa4287fb6f4b479da6f99e752ebde557e19ffb066a239eab2f9"
+    },
+    {
+      "file": "file-music.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-music.svg",
+      "sha256": "3590a42fac78e9d87e28062cf5572ddb963ba501b197c983033745cad0793954"
+    },
+    {
+      "file": "file-spreadsheet.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-spreadsheet.svg",
+      "sha256": "69960bb43dec3b66f0d1c2dd26c2f637a10540b8bea4ffb90f8764a8404016a0"
+    },
+    {
+      "file": "file-text.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-text.svg",
+      "sha256": "52ca55846c202335fb870c8aa23e9345630ec10489303756d62e750f7109605c"
+    },
+    {
+      "file": "file-video-camera.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file-video-camera.svg",
+      "sha256": "a1496d106b1d0d62da11f85fc36707924ff8c340b26083161959724c4c8acc3c"
+    },
+    {
+      "file": "file.svg",
+      "url": "https://github.com/lucide-icons/lucide/blob/main/icons/file.svg",
+      "sha256": "499039795d7412d67664ff79d2eb6b7412e746b24c18c8fd8aba383c24ddada0"
+    }
+  ]
+}

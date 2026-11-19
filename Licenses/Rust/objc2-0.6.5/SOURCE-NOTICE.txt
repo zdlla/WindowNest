@@ -1,0 +1,3 @@
+Package objc2 0.6.5
+License: MIT
+Repository: https://github.com/madsmtm/objc2

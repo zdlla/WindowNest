@@ -1,0 +1,22 @@
+[package]
+name = "windownest-cardinal"
+version = "0.6.0"
+edition = "2024"
+license = "MIT"
+
+[workspace]
+
+[dependencies]
+search-cache = { path = "../Vendor/Cardinal/search-cache" }
+search-cancel = { path = "../Vendor/Cardinal/search-cancel" }
+cardinal-sdk = { path = "../Vendor/Cardinal/cardinal-sdk" }
+fswalk = { path = "../Vendor/Cardinal/fswalk" }
+crossbeam-channel = "0.5.15"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+libc = "0.2"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = true

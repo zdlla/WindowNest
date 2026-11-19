@@ -1,0 +1,4 @@
+Rust standard-library notice snapshot from nightly-2025-12-11 toolchain used to build the helper.
+Upstream: https://github.com/rust-lang/rust
+Official explanation: https://github.com/rust-lang/rust/blob/main/COPYRIGHT
+COPYRIGHT-library.html covers all standard-library targets; inclusion of a target-specific entry does not mean it is linked into the macOS helper. Compiler/rustdoc notices for software not distributed are not copied wholesale.
