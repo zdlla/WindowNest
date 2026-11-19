@@ -1,0 +1,47 @@
+name: Publish verified WindowNest release
+on:
+  push:
+    paths:
+      - .release/plan.json
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: windownest-release
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+      - name: Assemble and verify prepared release artifacts
+        run: python3 .release/assemble.py
+      - name: Publish audited source tree
+        shell: bash
+        run: |
+          set -euo pipefail
+          release_dir="$RUNNER_TEMP/windownest-release"
+          version=$(python3 -c 'import json; print(json.load(open(".release/plan.json"))["version"])')
+          unzip -q "$release_dir/WindowNest-$version-source.zip" -d "$release_dir/source"
+          cp -R "$release_dir/source/WindowNest/." .
+          python3 Scripts/check_licenses.py
+          git rm -r .release-parts
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m "Publish audited WindowNest $version source"
+          git push origin HEAD:main
+      - name: Upload and publish complete release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          version=$(python3 -c 'import json; print(json.load(open(".release/plan.json"))["version"])')
+          release_dir="$RUNNER_TEMP/windownest-release"
+          gh release create "v$version" --repo "$GITHUB_REPOSITORY" --draft --target "$(git rev-parse HEAD)" --title "窗匣 $version · 保留数据更新与内部目录浏览" --notes-file .release/release-notes.md
+          gh release upload "v$version" --repo "$GITHUB_REPOSITORY" "$release_dir/WindowNest-$version-universal.zip" "$release_dir/WindowNest-$version-source.zip" "$release_dir/update-manifest.json" "$release_dir/update-manifest.sig" "$release_dir/SHA256SUMS.txt"
+          gh release edit "v$version" --repo "$GITHUB_REPOSITORY" --draft=false --latest

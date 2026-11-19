@@ -1,0 +1,10 @@
+{
+  "artifact": "WindowNest-0.20.0-universal.zip",
+  "build": 48,
+  "bytes": 8296094,
+  "minimumSystemVersion": "14.0",
+  "notes": "新增检查更新、自动提醒与签名校验安装；覆盖更新保留本机设置、书签、文件盒与多屏布局。文件盒支持内部目录浏览、返回、文件预览、嵌套目录重命名与新建文件夹。",
+  "repository": "zdlla/WindowNest",
+  "sha256": "ce4ada134db6caac505bbb127708e4bc49a342c05371f0dfd14e2191a230dae8",
+  "version": "0.20.0"
+}
