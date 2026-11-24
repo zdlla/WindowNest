@@ -39,4 +39,12 @@ import UniformTypeIdentifiers
         let image=NSImage(size:NSSize(width:48,height:48));image.addRepresentation(bitmap)
         cache.setObject(image,forKey:key,cost:96*96*4);return image
     }
+    func menuImage(for extensionName:String)->NSImage {
+        let source=image(for:URL(fileURLWithPath:"/new.\(extensionName)"),directory:false)
+        let image=source.copy() as! NSImage
+        // SwiftUI's macOS Menu uses NSImage's intrinsic size, even when a
+        // SwiftUI frame is applied. Never resize the shared file-grid image.
+        image.size=NSSize(width:16,height:16)
+        return image
+    }
 }

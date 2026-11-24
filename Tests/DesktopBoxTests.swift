@@ -69,6 +69,26 @@ import AppKit
         model.enter(entry)
         for _ in 0..<200 where model.loading { try? await Task.sleep(for:.milliseconds(10)) }
         precondition(model.pathComponents==["NestedTarget"] && model.items.contains(where:{$0.url.lastPathComponent=="Inside.txt"}))
+        model.selectedItem=child.appendingPathComponent("Inside.txt")
+        var createFailure:String?
+        model.createTextFile(name:"NestedNote.txt",contents:"fixture nested content") { createFailure=$0 }
+        for _ in 0..<200 where model.fileOperationActive || model.loading { try? await Task.sleep(for:.milliseconds(10)) }
+        precondition(createFailure == nil && model.selectedItem?.lastPathComponent=="NestedNote.txt", "Create state: error=\(String(describing:createFailure)), selection=\(String(describing:model.selectedItem)), items=\(model.items.map{ $0.url.lastPathComponent })")
+        let createdContent=try String(contentsOf:child.appendingPathComponent("NestedNote.txt"),encoding:.utf8)
+        precondition(createdContent=="fixture nested content" && !FileManager.default.fileExists(atPath:b.appendingPathComponent("NestedNote.txt").path))
+        model.createTextFile(name:"NestedNote.txt",contents:"replacement") { createFailure=$0 }
+        for _ in 0..<200 where model.fileOperationActive { try? await Task.sleep(for:.milliseconds(10)) }
+        precondition(createFailure != nil)
+        let template=root.appendingPathComponent("Fixture.bin")
+        let templateData=Data([1,2,3,0,255]);try templateData.write(to:template)
+        model.createFromTemplate(template)
+        for _ in 0..<200 where model.fileOperationActive || model.loading { try? await Task.sleep(for:.milliseconds(10)) }
+        let copied=try Data(contentsOf:child.appendingPathComponent("新建 Fixture.bin"))
+        precondition(copied==templateData)
+        model.createFromTemplate(template)
+        for _ in 0..<200 where model.fileOperationActive || model.loading { try? await Task.sleep(for:.milliseconds(10)) }
+        precondition(FileManager.default.fileExists(atPath:child.appendingPathComponent("新建 Fixture 2.bin").path))
+        let originalTemplate=try Data(contentsOf:template);precondition(originalTemplate==templateData)
         model.rename(child.appendingPathComponent("Inside.txt"),folder:config.folders[1],to:"EditedName.txt",tab:false)
         for _ in 0..<200 where model.fileOperationActive || model.loading { try? await Task.sleep(for:.milliseconds(10)) }
         precondition(FileManager.default.fileExists(atPath:child.appendingPathComponent("EditedName.txt").path))
@@ -86,6 +106,7 @@ import AppKit
         do { _=try DesktopBoxNavigation.directory(root:b,components:[".."]);preconditionFailure("Traversal accepted") } catch {}
         do { _=try DesktopBoxNavigation.directory(root:b,components:["AliasTarget"]);preconditionFailure("External symlink accepted") } catch {}
         model.navigate(to:[])
+        precondition(model.selectedItem == nil && model.renameTarget == nil,"Changing directory clears item selection and pending rename")
         for _ in 0..<200 where model.loading { try? await Task.sleep(for:.milliseconds(10)) }
         model.move(config.folders[1].id,by:-1)
         precondition(model.configuration.folders[0].id == config.folders[1].id)

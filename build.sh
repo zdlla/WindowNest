@@ -26,6 +26,7 @@ mkdir -p "$APP/Contents/Resources/Licenses"
 cp "$ROOT/Engine/WindowNestCardinal" "$APP/Contents/Helpers/WindowNestCardinal"
 cp "$ROOT/Vendor/Cardinal/LICENSE" "$APP/Contents/Resources/Licenses/Cardinal-MIT.txt"
 ditto "$ROOT/Resources/FileTypeIcons" "$APP/Contents/Resources/FileTypeIcons"
+ditto "$ROOT/Resources/NewFileTemplates" "$APP/Contents/Resources/NewFileTemplates"
 if [[ -d "$ROOT/Licenses" ]]; then ditto "$ROOT/Licenses" "$APP/Contents/Resources/Licenses"; fi
 SIGN_IDENTITY="${WINDOW_NEST_SIGN_IDENTITY:--}"
 SIGN_ARGS=(--force --options runtime --sign "$SIGN_IDENTITY")

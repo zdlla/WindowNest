@@ -34,6 +34,13 @@ import AppKit
         _=icons.image(for:prefix.appendingPathComponent("Folder.pdf"),directory:true)
         let missing=FileTypeIcons(assetDirectory:prefix)
         _=missing.image(for:prefix.appendingPathComponent("Sample.pdf"),directory:false)
+        for ext in ["txt","rtf","xml","docx","xlsx","pptx","md","py"] {
+            let original=icons.image(for:prefix.appendingPathComponent("Sample.\(ext)"),directory:false)
+            let size=original.size
+            let menu=icons.menuImage(for:ext)
+            precondition(menu.size==NSSize(width:16,height:16))
+            precondition(original.size==size && menu !== original,"Menu scaling must not shrink file-grid icons")
+        }
         print("Passed 39 bundled images, colored rendering, aliases, cache reuse, folders and missing-asset fallback without reading user files")
     }
 }

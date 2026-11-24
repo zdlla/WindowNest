@@ -19,6 +19,13 @@ xcrun swiftc -swift-version 5 -parse-as-library -sdk "$SDK" -module-cache-path "
 xcrun swiftc -swift-version 5 -parse-as-library -sdk "$SDK" -module-cache-path "$BUILD/module-cache" \
  Sources/DesktopBoxClickFeedback.swift Tests/DesktopBoxClickFeedbackTests.swift -o "$BUILD/DesktopBoxClickFeedbackTests"
 "$BUILD/DesktopBoxClickFeedbackTests"
+xcrun swiftc -swift-version 5 -parse-as-library -sdk "$SDK" -module-cache-path "$BUILD/module-cache" \
+ Sources/DesktopBoxItemInteraction.swift Tests/DesktopBoxInteractionTests.swift -o "$BUILD/DesktopBoxInteractionTests"
+"$BUILD/DesktopBoxInteractionTests"
+python3 Tests/test_new_file_templates.py Resources/NewFileTemplates
+xcrun swiftc -swift-version 5 -parse-as-library -sdk "$SDK" -module-cache-path "$BUILD/module-cache" \
+ Sources/DesktopNewFile.swift Sources/DesktopBoxFileOperations.swift Tests/DesktopNewFileTests.swift -framework AppKit -o "$BUILD/DesktopNewFileTests"
+"$BUILD/DesktopNewFileTests" "$PWD/Resources/NewFileTemplates"
 sources=()
 for source in Sources/*.swift; do [[ "$source" == Sources/main.swift ]] || sources+=("$source"); done
 xcrun swiftc -swift-version 5 -parse-as-library -sdk "$SDK" -module-cache-path "$BUILD/module-cache" \

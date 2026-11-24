@@ -2,19 +2,49 @@ import Foundation
 import Darwin
 
 enum DesktopBoxFileError: LocalizedError {
-    case invalidName, collision, outsideFolder, recursiveMove
+    case invalidName, collision, outsideFolder, recursiveMove, textTooLarge
     var errorDescription: String? {
         switch self {
         case .invalidName: return "名称不能为空，也不能包含 /、: 或控制字符。"
         case .collision: return "已有同名项目，请换一个名称。"
         case .outsideFolder: return "项目已移动，请刷新文件盒后重试。"
         case .recursiveMove: return "不能把文件夹移入它自己或它的子文件夹。"
+        case .textTooLarge: return "新建文本请控制在 1 MB 以内；较大的内容可使用默认编辑器处理。"
         }
     }
 }
 
 /// Explicit user operations only. No automatic cleanup, overwrite or traversal.
 enum DesktopBoxFileOperations {
+    static func validateName(_ name:String)throws {
+        guard !name.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty, name != ".", name != "..",
+              !name.contains("/"), !name.contains(":"), name.rangeOfCharacter(from:.controlCharacters) == nil else {
+            throw DesktopBoxFileError.invalidName
+        }
+    }
+    static func createTextFile(in directory:URL,name:String,contents:String)throws->URL {
+        guard contents.utf8.count <= 1024*1024 else { throw DesktopBoxFileError.textTooLarge }
+        return try createFile(in:directory,name:name,data:Data(contents.utf8))
+    }
+    static func createFile(in directory:URL,name:String,data:Data)throws->URL {
+        try validateName(name)
+        guard data.count <= 50*1024*1024 else { throw CocoaError(.fileReadTooLarge) }
+        let root=directory.standardizedFileURL.resolvingSymlinksInPath()
+        guard (try root.resourceValues(forKeys:[.isDirectoryKey])).isDirectory == true else { throw DesktopBoxFileError.outsideFolder }
+        let target=root.appendingPathComponent(name)
+        let staged=root.appendingPathComponent(".windownest-new-\(UUID())")
+        let descriptor=staged.path.withCString { open($0,O_WRONLY|O_CREAT|O_EXCL|O_NOFOLLOW,0o600) }
+        guard descriptor >= 0 else { throw POSIXError(POSIXErrorCode(rawValue:errno) ?? .EIO) }
+        defer { _=staged.path.withCString { unlink($0) } }
+        let handle=FileHandle(fileDescriptor:descriptor,closeOnDealloc:true)
+        try handle.write(contentsOf:data);try handle.close()
+        let result=staged.path.withCString { from in target.path.withCString { to in renamex_np(from,to,UInt32(RENAME_EXCL)) } }
+        guard result == 0 else {
+            if errno == EEXIST { throw DesktopBoxFileError.collision }
+            throw POSIXError(POSIXErrorCode(rawValue:errno) ?? .EIO)
+        }
+        return target
+    }
     static func createFolder(in directory:URL)throws->URL {
         for suffix in 0..<10000 {
             let name=suffix==0 ? "新建文件夹" : "新建文件夹 \(suffix+1)"
@@ -30,10 +60,7 @@ enum DesktopBoxFileOperations {
         var value = stat(); return lstat(url.path, &value) == 0
     }
     static func rename(_ source: URL, in folder: URL, to name: String) throws -> URL {
-        guard !name.trimmingCharacters(in:.whitespacesAndNewlines).isEmpty, name != ".", name != "..",
-              !name.contains("/"), !name.contains(":"), name.rangeOfCharacter(from:.controlCharacters) == nil else {
-            throw DesktopBoxFileError.invalidName
-        }
+        try validateName(name)
         let root = folder.standardizedFileURL.resolvingSymlinksInPath()
         guard source.deletingLastPathComponent().standardizedFileURL.resolvingSymlinksInPath() == root else {
             throw DesktopBoxFileError.outsideFolder

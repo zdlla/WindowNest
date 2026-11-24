@@ -103,6 +103,8 @@ enum DesktopBoxDirectory {
     @Published private(set) var loading = false
     @Published var error: String?
     @Published var notice: String?
+    @Published var selectedItem:URL?
+    @Published var renameTarget:URL?
     @Published private(set) var fileOperationActive = false
     var changed: (() -> Void)?
     private var request: Task<Void, Never>?
@@ -113,6 +115,7 @@ enum DesktopBoxDirectory {
     func navigate(to components:[String]) {
         guard !fileOperationActive,let folder else { return }
         var paths=configuration.browsePaths ?? [:];paths[folder.id.uuidString]=components
+        selectedItem=nil;renameTarget=nil
         configuration.browsePaths=paths;changed?();refresh()
     }
     func enter(_ item:DesktopBoxItem) {
@@ -125,18 +128,66 @@ enum DesktopBoxDirectory {
         Task { @MainActor in
             defer { self.fileOperationActive=false }
             do {
-                _=try await Task.detached(priority:.userInitiated) {
+                let created=try await Task.detached(priority:.userInitiated) {
                     let root=try DesktopBoxNavigation.directory(root:folder.resolvedURL(),components:path)
                     return try DesktopBoxFileOperations.createFolder(in:root)
                 }.value
-                if self.folder?.id==folder.id && self.pathComponents==path { self.refresh() }
+                if self.folder?.id==folder.id && self.pathComponents==path {
+                    self.selectedItem=created;self.renameTarget=created;self.refresh()
+                }
             } catch { self.notice="新建文件夹失败：\(error.localizedDescription)" }
         }
     }
-    func select(_ folder: QuickFolder) { configuration.selected = folder.id; changed?(); refresh() }
-    func stop() { generation = UUID(); request?.cancel(); request = nil; items = []; loading = false }
+    func createTextFile(name:String,contents:String,completion:@escaping (String?)->Void) {
+        createFile(kind:.text,name:name,contents:contents,completion:completion)
+    }
+    func createFile(kind:DesktopNewFileKind,name:String,contents:String,completion:@escaping (String?)->Void) {
+        guard (name as NSString).pathExtension.lowercased()==kind.ext else { completion("\(kind.title) 文件需要保留 .\(kind.ext) 扩展名。");return }
+        let templates=Bundle.main.resourceURL?.appendingPathComponent("NewFileTemplates")
+        createFileData(name:name,load:{ try kind.data(contents:contents,templates:templates) },completion:completion)
+    }
+    func createFromTemplate(_ source:URL) {
+        createFileData(name:"新建 "+source.lastPathComponent,uniqueName:true,load:{
+            let values=try source.resourceValues(forKeys:[.isRegularFileKey,.isSymbolicLinkKey,.fileSizeKey])
+            guard values.isRegularFile == true,values.isSymbolicLink != true,(values.fileSize ?? Int.max)<=50*1024*1024 else { throw CocoaError(.fileReadUnsupportedScheme) }
+            let access=source.startAccessingSecurityScopedResource();defer { if access { source.stopAccessingSecurityScopedResource() } }
+            return try Data(contentsOf:source,options:.mappedIfSafe)
+        },completion:{ [weak self] error in if let error { self?.notice=error } })
+    }
+    private func createFileData(name:String,uniqueName:Bool=false,load:@escaping ()throws->Data,completion:@escaping (String?)->Void) {
+        guard !fileOperationActive,let folder else { completion("请先选择可访问的文件夹。");return }
+        let path=pathComponents;fileOperationActive=true;notice=nil
+        Task { @MainActor in
+            defer { self.fileOperationActive=false }
+            do {
+                let created=try await Task.detached(priority:.userInitiated) {
+                    let root=try DesktopBoxNavigation.directory(root:folder.resolvedURL(),components:path)
+                    let data=try load()
+                    for index in 0..<10000 {
+                        let ext=(name as NSString).pathExtension
+                        let stem=ext.isEmpty ? name : (name as NSString).deletingPathExtension
+                        let candidate=index==0 ? name : "\(stem) \(index+1)"+(ext.isEmpty ? "" : "."+ext)
+                        do { return try DesktopBoxFileOperations.createFile(in:root,name:candidate,data:data) }
+                        catch DesktopBoxFileError.collision where uniqueName { continue }
+                    }
+                    throw DesktopBoxFileError.collision
+                }.value
+                if self.folder?.id==folder.id && self.pathComponents==path { self.selectedItem=created;self.refresh() }
+                completion(nil)
+            } catch { completion(error.localizedDescription) }
+        }
+    }
+    func requestRename(_ item:DesktopBoxItem) {
+        guard !fileOperationActive,items.contains(where:{$0.id==item.id}) else { return }
+        selectedItem=item.url;renameTarget=item.url
+    }
+    func select(_ folder: QuickFolder) { selectedItem=nil;renameTarget=nil;configuration.selected = folder.id; changed?(); refresh() }
+    func stop(clearSelection:Bool=true) {
+        generation = UUID(); request?.cancel(); request = nil; items = []; loading = false
+        if clearSelection { selectedItem=nil;renameTarget=nil }
+    }
     func refresh() {
-        stop()
+        stop(clearSelection:false)
         guard let folder else { return }
         let token = generation,path=pathComponents; loading = true; error = nil
         request = Task { [weak self] in
@@ -145,7 +196,11 @@ enum DesktopBoxDirectory {
             guard let self, !Task.isCancelled, self.generation == token else { return }
             self.loading = false
             switch result {
-            case .success(let items): self.items = items
+            case .success(let items):
+                self.items = items
+                // Enumerator URLs can carry a base URL while newly created URLs
+                // are absolute. Compare their normalized paths, not URL storage.
+                if let selected=self.selectedItem,!items.contains(where:{$0.url.standardizedFileURL.path==selected.standardizedFileURL.path}) { self.selectedItem=nil;self.renameTarget=nil }
             case .failure: self.error = "无法访问所选文件夹，请连接磁盘或重新选择。"
             }
         }
@@ -243,7 +298,10 @@ enum DesktopBoxDirectory {
                 if tab, let index=self.configuration.folders.firstIndex(where:{$0.id==folder.id}) {
                     self.configuration.folders[index]=try QuickFolder(url:updated,id:folder.id);self.changed?()
                 }
-                if self.folder?.id == folder.id { self.refresh() }
+                if self.folder?.id == folder.id {
+                    if !tab { self.selectedItem=updated;self.renameTarget=nil }
+                    self.refresh()
+                }
             } catch { self.notice = "重命名未完成：\(error.localizedDescription)" }
         }
     }
@@ -547,6 +605,10 @@ private struct DesktopFileBoxView: View {
     @DesktopBoxState private var tabsDropTargeted = false
     @DesktopBoxState private var childDropTarget:URL?
     @DesktopBoxState private var previewURL:URL?
+    @DesktopBoxState private var creatingFile=false
+    @DesktopBoxState private var newFileKind:DesktopNewFileKind = .text
+    @DesktopBoxState private var createError:String?
+    @StateObject private var hostingWindow=DesktopBoxWindowReference()
     var body: some View {
         VStack(spacing: 0) {
             HStack(spacing: 6) {
@@ -612,7 +674,11 @@ private struct DesktopFileBoxView: View {
                             }
                         }
                     }.scrollIndicators(.never)
-                    Button { model.createFolder() } label:{Image(systemName:"folder.badge.plus")}.disabled(model.fileOperationActive).help("在当前目录新建文件夹")
+                    Menu {
+                        Button("新建文件夹") { model.createFolder() }
+                        newFileCommands
+                    } label:{Image(systemName:"plus")}.menuStyle(.borderlessButton).fixedSize()
+                        .disabled(model.fileOperationActive).help("在当前目录新建文件夹或文件")
                 }.font(.system(size:11)).buttonStyle(.borderless).padding(.horizontal,12).padding(.vertical,6)
                 Divider()
             }
@@ -627,11 +693,14 @@ private struct DesktopFileBoxView: View {
             else if let error = model.error {
                 Text(error).foregroundStyle(.secondary).padding().frame(maxWidth:.infinity,maxHeight:.infinity)
             } else if model.items.isEmpty {
-                Text("这个文件夹是空的").foregroundStyle(.secondary).frame(maxWidth:.infinity,maxHeight:.infinity)
+                VStack(spacing:10) {
+                    Image(systemName:"folder").font(.system(size:30,weight:.light)).foregroundStyle(.tertiary)
+                    Text("文件夹为空").font(.system(size:13)).foregroundStyle(.secondary)
+                }.frame(maxWidth:.infinity,maxHeight:.infinity)
             } else {
                 GeometryReader { geometry in
                 ScrollView {
-                    LazyVGrid(columns:Array(repeating:GridItem(.flexible(),spacing:10,alignment:.leading),count:DesktopBoxLayout.columns(width:geometry.size.width,textWidth:(String(repeating:"文",count:15) as NSString).size(withAttributes:[.font:NSFont.systemFont(ofSize:13)]).width,iconWidth:model.configuration.list ? 24 : 32)),alignment:.leading,spacing:4) {
+                    LazyVGrid(columns:model.configuration.list ? Array(repeating:GridItem(.flexible(),spacing:12,alignment:.leading),count:DesktopBoxLayout.columns(width:geometry.size.width,textWidth:(String(repeating:"文",count:15) as NSString).size(withAttributes:[.font:NSFont.systemFont(ofSize:13)]).width,iconWidth:26)) : [GridItem(.adaptive(minimum:108,maximum:152),spacing:12)],alignment:.leading,spacing:model.configuration.list ? 4 : 10) {
                         ForEach(model.items) { item in
                             itemView(item)
                         }
@@ -641,7 +710,12 @@ private struct DesktopFileBoxView: View {
             }
             }
             .frame(maxWidth:.infinity,maxHeight:.infinity)
-            .contentShape(Rectangle())
+            .background(Color(nsColor:.textBackgroundColor).opacity(0.10))
+            .background {
+                Color.clear.contentShape(Rectangle())
+                    .onTapGesture { model.selectedItem=nil;model.renameTarget=nil }
+            }
+            .contextMenu { directoryCommands }
             .onDrop(of:[UTType.fileURL],isTargeted:$contentDropTargeted) { providers in
                 contentDropTargeted=false;tabsDropTargeted=false
                 return model.receiveDrop(providers,asTabs:false)
@@ -661,6 +735,7 @@ private struct DesktopFileBoxView: View {
                 .opacity(reduceTransparency || preferences.settings.effects == .minimal ? 1 : min(1,max(0.45,model.configuration.opacity)))
         }
         .overlay(alignment:.top) { accent.opacity(0.14).frame(height:1).allowsHitTesting(false) }
+        .background(DesktopBoxWindowCapture(reference:hostingWindow).frame(width:0,height:0))
         .clipShape(RoundedRectangle(cornerRadius:12,style:.continuous))
         .overlay(alignment:.bottomTrailing) {
             if !model.locked && !folded { DesktopBoxResizeHandle().frame(width:18,height:18).help("拖动调整大小") }
@@ -678,22 +753,58 @@ private struct DesktopFileBoxView: View {
         .onChange(of:model.configuration.selected) { _,_ in contentDropTargeted=false;tabsDropTargeted=false;childDropTarget=nil }
         .onChange(of:model.pathComponents) { _,_ in contentDropTargeted=false;childDropTarget=nil;previewURL=nil }
         .onChange(of:model.fileOperationActive) { _,_ in contentDropTargeted=false;tabsDropTargeted=false;childDropTarget=nil }
-        .onDisappear { contentDropTargeted=false;tabsDropTargeted=false;childDropTarget=nil;previewURL=nil }
+        .onDisappear { contentDropTargeted=false;tabsDropTargeted=false;childDropTarget=nil;previewURL=nil;hostingWindow.endModal() }
         .quickLookPreview($previewURL)
+        .sheet(isPresented:$creatingFile,onDismiss:{ hostingWindow.endModal() }) {
+            DesktopBoxNewFileSheet(kind:newFileKind,saving:model.fileOperationActive,error:createError,onCancel:{ creatingFile=false },onCreate:{ name,contents in
+                createError=nil
+                model.createFile(kind:newFileKind,name:name,contents:contents) { error in
+                    if let error { createError=error } else { creatingFile=false }
+                }
+            })
+        }
+    }
+    private func presentNewFile(_ kind:DesktopNewFileKind) {
+        guard !model.fileOperationActive else { return }
+        newFileKind=kind;createError=nil;hostingWindow.beginModal();creatingFile=true
+    }
+    private func chooseFileTemplate() {
+        guard !model.fileOperationActive,let window=hostingWindow.window ?? NSApp.keyWindow else { return }
+        let panel=NSOpenPanel();panel.title="选择用于新建的文件模板";panel.prompt="使用模板"
+        panel.message="在当前文件夹创建模板的副本，原文件保持不变。";panel.canChooseDirectories=false;panel.allowsMultipleSelection=false
+        let level=window.level;window.level = .normal;NSApp.activate();window.makeKeyAndOrderFront(nil)
+        panel.beginSheetModal(for:window) { response in
+            window.level=level
+            if response == .OK,let url=panel.url { model.createFromTemplate(url) }
+        }
+    }
+    @ViewBuilder private var newFileCommands:some View {
+        ForEach(DesktopNewFileKind.allCases) { kind in
+            Button { presentNewFile(kind) } label: {
+                Label { Text(kind.title) } icon: { Image(nsImage:FileTypeIcons.shared.menuImage(for:kind.ext)).resizable().scaledToFit().frame(width:16,height:16) }
+            }
+        }
+        Divider()
+        Button("从其他文件模板新建…") { chooseFileTemplate() }
+    }
+    @ViewBuilder private var directoryCommands:some View {
+        Button("新建文件夹") { model.createFolder() }.disabled(model.folder == nil || model.fileOperationActive)
+        Menu("新建文件") { newFileCommands }.disabled(model.folder == nil || model.fileOperationActive)
+        Divider()
+        Button("刷新") { model.refresh() }.disabled(model.fileOperationActive)
+        Button("返回上一级") { model.navigate(to:Array(model.pathComponents.dropLast())) }.disabled(model.pathComponents.isEmpty || model.fileOperationActive)
     }
     private func itemView(_ item: DesktopBoxItem) -> some View {
-        DesktopBoxFileCell(item:item,icon:FileTypeIcons.shared.image(for:item.url,directory:item.directory),large:!model.configuration.list,onOpen:{
-            if item.acceptsChildren { model.enter(item) } else { previewURL=item.url }
-        })
-        .onDrag { NSItemProvider(object:item.url as NSURL) }
-        .contextMenu {
-            Button(item.acceptsChildren ? "在文件盒中打开" : "预览") { if item.acceptsChildren { model.enter(item) } else { previewURL=item.url } }
-            Button(item.directory ? "在访达中打开" : "使用默认应用编辑 / 打开") { NSWorkspace.shared.open(item.url) }
-            Button("重命名…") { onRename(item,nil) }.disabled(model.fileOperationActive)
-            Button("在访达中显示") { NSWorkspace.shared.activateFileViewerSelecting([item.url]) }
-        }
-        .accessibilityLabel(item.url.lastPathComponent)
-        .accessibilityHint("单击打开，也可以拖到其他应用")
+        DesktopBoxItemCell(item:item,icon:FileTypeIcons.shared.image(for:item.url,directory:item.directory),large:!model.configuration.list,
+            selected:model.selectedItem?.standardizedFileURL.path==item.url.standardizedFileURL.path,
+            renameRequested:model.renameTarget?.standardizedFileURL.path==item.url.standardizedFileURL.path,disabled:model.fileOperationActive,
+            accent:NSColor(accent),reducedMotion:reduceMotion || preferences.settings.effects == .minimal,
+            onSelect:{ model.selectedItem=item.url },onDeselect:{ model.selectedItem=nil;model.renameTarget=nil },
+            onOpen:{ if item.acceptsChildren { model.enter(item) } else { NSWorkspace.shared.open(item.url) } },
+            onPreview:{ previewURL=item.url },onRenameStarted:{ model.renameTarget=nil },onRename:{ name in
+                if let folder=model.folder { model.rename(item.url,folder:folder,to:name,tab:false) }
+            },onNewFolder:{ model.createFolder() },onNewFile:{ presentNewFile($0) },onTemplate:{ chooseFileTemplate() })
+        .frame(height:model.configuration.list ? 34 : 106)
         .modifier(DesktopBoxFolderDropTarget(model:model,item:item,onTarget:{ active in
             if active { childDropTarget=item.url }
             else if childDropTarget == item.url { childDropTarget=nil }
@@ -728,35 +839,6 @@ private struct DesktopBoxFolderDropTarget:ViewModifier {
             .onDrop(of:[UTType.fileURL],delegate:DesktopBoxFolderDropDelegate(model:model,item:item,onTarget:{ value in targeted=value;onTarget(value) }))
             .onChange(of:model.fileOperationActive) { _,_ in targeted=false;onTarget(false) }
             .onDisappear { targeted=false;onTarget(false) }
-    }
-}
-
-private struct DesktopBoxFileCell:View {
-    let item:DesktopBoxItem
-    let icon:NSImage
-    let large:Bool
-    let onOpen:()->Void
-    @Environment(\.workspaceAccent) private var accent
-    @Environment(\.accessibilityReduceMotion) private var reduced
-    @EnvironmentObject private var preferences:AppearanceStore
-    @StateObject private var feedback=DesktopBoxClickFeedback()
-    private var simple:Bool { reduced || preferences.settings.effects == .minimal }
-    var body:some View {
-        HStack(spacing:8) {
-            Image(nsImage:icon).resizable().scaledToFit().frame(width:large ? 32 : 24,height:large ? 32 : 24)
-            Text(item.url.lastPathComponent).font(.system(size:13)).lineLimit(1).truncationMode(.middle)
-            Spacer(minLength:0)
-        }.padding(.horizontal,6).padding(.vertical,4)
-        .background(accent.opacity(feedback.active ? 0.12 : 0),in:RoundedRectangle(cornerRadius:7))
-        .contentShape(RoundedRectangle(cornerRadius:7))
-        .scaleEffect(feedback.active && !simple ? 0.97 : 1)
-        .animation(simple ? .easeOut(duration:0.1) : .spring(response:0.24,dampingFraction:0.88),value:feedback.active)
-        .nativeHoverFeedback(in:RoundedRectangle(cornerRadius:7))
-        .onTapGesture { feedback.click();onOpen() }
-        .accessibilityAddTraits(.isButton)
-        .accessibilityAction { feedback.click();onOpen() }
-        .onDisappear { feedback.clear() }
-        .onChange(of:item.id) { _,_ in feedback.clear() }
     }
 }
 

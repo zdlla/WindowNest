@@ -40,6 +40,20 @@ import Foundation
         precondition(fm.fileExists(atPath:renamed.path) && DesktopBoxFileOperations.exists(renamedLink))
         let dangling=target.appendingPathComponent("Reserved.txt");try fm.createSymbolicLink(atPath:dangling.path,withDestinationPath:root.appendingPathComponent("missing").path)
         mustFail { _ = try DesktopBoxFileOperations.rename(renamed,in:target,to:"Reserved.txt") }
+        let text=try DesktopBoxFileOperations.createTextFile(in:target,name:"新建内容.md",contents:"# Example\n中文内容\n")
+        let content=try String(contentsOf:text,encoding:.utf8);precondition(content=="# Example\n中文内容\n")
+        let permissions=try fm.attributesOfItem(atPath:text.path)[.posixPermissions] as! NSNumber
+        precondition(permissions.intValue==0o600)
+        mustFail { _=try DesktopBoxFileOperations.createTextFile(in:target,name:"新建内容.md",contents:"must not overwrite") }
+        mustFail { _=try DesktopBoxFileOperations.createTextFile(in:target,name:"Reserved.txt",contents:"must not replace symlink") }
+        for invalid in ["","..","../outside.txt","bad/name.txt","bad:name","bad\nname"] {
+            mustFail { _=try DesktopBoxFileOperations.createTextFile(in:target,name:invalid,contents:"") }
+        }
+        mustFail { _=try DesktopBoxFileOperations.createTextFile(in:target,name:"Oversize.txt",contents:String(repeating:"文",count:400000)) }
+        let after=try String(contentsOf:text,encoding:.utf8);precondition(after==content)
+        let leftovers=try fm.contentsOfDirectory(atPath:target.path)
+        precondition(!leftovers.contains(where:{$0.hasPrefix(".windownest-new-")}),"Failed creates must remove temporary files")
+        precondition(!fm.fileExists(atPath:root.appendingPathComponent("outside.txt").path))
         print("Passed move, source removal, collisions, folder contents, rename validation, containment and symlink safety checks")
     }
 }
