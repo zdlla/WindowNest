@@ -1,6 +1,6 @@
 # 窗匣 WindowNest
 
-macOS 原生窗口、应用与桌面文件夹入口，使用 SwiftUI/AppKit。文件全局查找由本机 Cardinal Rust helper 提供。当前审查版本：0.20.0。
+macOS 原生窗口、应用与桌面文件夹入口，使用 SwiftUI/AppKit。文件全局查找由本机 Cardinal Rust helper 提供。当前审查版本：0.20.1。
 
 **[下载最新正式版](https://github.com/zdlla/WindowNest/releases/latest)**
 

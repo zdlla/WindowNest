@@ -54,6 +54,7 @@ protocol WindowControlAccess {
     func canSetMinimized(_ window: Element) throws -> Bool
     func minimized(_ window: Element) throws -> Bool?
     func setMinimized(_ value: Bool, window: Element) throws
+    func hasSheet(_ window: Element) throws -> Bool
     func press(_ button: Element) throws
     func canZoom(_ window: Element) throws -> Bool
     func zoom(_ window: Element) throws
@@ -70,10 +71,61 @@ struct WindowControlDriver<Access: WindowControlAccess> {
             guard let button = try? access.button(of: window, action: action) else { return false }
             return (try? access.enabled(button)) == true
         }
-        return WindowControlCapabilities(close: canPress(.close),
+        // Some apps remove/disable the close control while miniaturized. Keep
+        // close available when this exact window can first be restored.
+        let canRestore = (try? access.minimized(window)) == true && (try? access.canSetMinimized(window)) == true
+        return WindowControlCapabilities(close: canPress(.close) || canRestore,
             minimize: (try? access.canSetMinimized(window)) == true && (try? access.minimized(window)) != nil,
             zoom: (try? access.canZoom(window)) == true,
             fullscreen: (try? access.canSetFullScreen(window)) == true && (try? access.fullScreen(window)) != nil)
+    }
+
+    /// Restore only the requested minimized window, then wait for its AX close
+    /// control to return. The injected scheduler keeps the serial AX queue free;
+    /// no polling survives this one bounded, user-initiated operation.
+    func requestClose(on window: Access.Element,
+        schedule: @escaping (TimeInterval, @escaping () -> Void) -> Void,
+        completion: @escaping (Result<Void, Error>) -> Void) {
+        var restored = false
+        var attemptedPress = false
+        func fail(_ error: Error) {
+            // Never hide an unsaved-document sheet or undo an ambiguous press.
+            if restored && !attemptedPress, (try? access.hasSheet(window)) == false {
+                try? access.setMinimized(true, window: window)
+            }
+            completion(.failure(error))
+        }
+        func attempt(_ remaining: Int) {
+            do {
+                guard try !access.hasSheet(window) else { throw WindowControlFailure.unsupported }
+                if try access.minimized(window) != true,
+                   let button = try access.button(of: window, action: .close), try access.enabled(button) {
+                    attemptedPress = true
+                    try access.press(button)
+                    completion(.success(()))
+                } else if remaining > 0 {
+                    schedule(0.08) { attempt(remaining - 1) }
+                } else { throw WindowControlFailure.unsupported }
+            } catch WindowControlFailure.unavailable where remaining > 0 && !attemptedPress {
+                // AX can briefly time out while Dock restores the window. Only
+                // retry reads; an ambiguous close press is never repeated.
+                schedule(0.08) { attempt(remaining - 1) }
+            } catch { fail(error) }
+        }
+        do {
+            guard try !access.hasSheet(window) else { throw WindowControlFailure.unsupported }
+            if try access.minimized(window) == true, try access.canSetMinimized(window) {
+                restored = true
+                try access.setMinimized(false, window: window)
+                schedule(0.08) { attempt(11) }
+            } else {
+                // Native close is still valid for apps that can close minimized
+                // windows but don't expose a writable minimized attribute.
+                attemptedPress = true
+                try perform(.close, on: window)
+                completion(.success(()))
+            }
+        } catch { fail(error) }
     }
 
     func perform(_ action: WindowControlAction, on window: Access.Element) throws {
@@ -130,6 +182,11 @@ final class AXWindowControlAccess: WindowControlAccess {
 
     func minimized(_ window: AXUIElement) throws -> Bool? {
         (try read(window, kAXMinimizedAttribute) as? NSNumber)?.boolValue
+    }
+
+    func hasSheet(_ window: AXUIElement) throws -> Bool {
+        let children = try read(window, kAXChildrenAttribute) as? [AXUIElement] ?? []
+        return try children.contains { (try read($0, kAXRoleAttribute) as? String) == kAXSheetRole as String }
     }
 
     func canSetFullScreen(_ window: AXUIElement) throws -> Bool { try settable(window, "AXFullScreen") }

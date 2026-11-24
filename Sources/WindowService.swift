@@ -385,28 +385,28 @@ final class WindowService: @unchecked Sendable {
             return
         }
         let execute = { [self] in queue.async { [self] in
+            if action == .close {
+                WindowControlDriver(access: controlAccess).requestClose(on: element,
+                    schedule: { delay, work in self.queue.asyncAfter(deadline: .now() + delay, execute: work) }) { result in
+                    switch result {
+                    case .success:
+                        self.observeClose(window, running: running)
+                        DispatchQueue.main.async { completion(nil) }
+                    case .failure(let error):
+                        if Self.hasSheet(element) { self.revealConfirmation(window, running: running) }
+                        let message = (error as? WindowControlFailure)?.message ?? error.localizedDescription
+                        DispatchQueue.main.async { completion(message) }
+                    }
+                }
+                return
+            }
             do {
                 controlAccess.visibleScreens = screens
                 try WindowControlDriver(access: controlAccess).perform(action, on: element)
                 if action == .zoom && controlAccess.hasPendingZoom(element) {
                     finishZoom(window, completion: completion)
                 } else { DispatchQueue.main.async { completion(nil) } }
-                if action == .close {
-                    // A successful AXPress means the request was accepted, not
-                    // that the document was discarded. Keep save decisions in
-                    // the owning app, and reveal its sheet when one appears.
-                    for delay in [0.18, 0.65] {
-                        queue.asyncAfter(deadline: .now() + delay) {
-                            if Self.hasSheet(element) { self.revealConfirmation(window, running: running) }
-                            else if Self.isDestroyed(element), let id = window.cgID {
-                                // Closed AppKit windows may leave WindowServer
-                                // metadata alive until their owner releases the
-                                // object. Don't resurrect that stale metadata.
-                                self.destroyedWindowIDs[id] = window.pid
-                            }
-                        }
-                    }
-                }
+
             } catch {
                 let message = (error as? WindowControlFailure)?.message ?? error.localizedDescription
                 DispatchQueue.main.async { completion(message) }
@@ -421,6 +421,17 @@ final class WindowService: @unchecked Sendable {
                 else { queue.asyncAfter(deadline: .now() + 0.18) { execute() } }
             }
         } else { execute() }
+    }
+
+    private func observeClose(_ window: WindowRecord, running: NSRunningApplication?) {
+        guard let element = window.element else { return }
+        // AXPress accepts the request; it never answers a save confirmation.
+        for delay in [0.18, 0.65] {
+            queue.asyncAfter(deadline: .now() + delay) {
+                if Self.hasSheet(element), let running { self.revealConfirmation(window, running: running) }
+                else if Self.isDestroyed(element), let id = window.cgID { self.destroyedWindowIDs[id] = window.pid }
+            }
+        }
     }
 
     private func finishZoom(_ window: WindowRecord, completion: @escaping (String?) -> Void) {
@@ -460,42 +471,39 @@ final class WindowService: @unchecked Sendable {
                 guard let element = window.element else {
                     var skipped = report; skipped.failures.append("有窗口尚未取得操作权限，已保留。"); next(index + 1, skipped); return
                 }
-                var updated = report
-                do {
-                    if Self.hasSheet(element) {
-                        updated.awaitingConfirmation = true
-                        if let running = NSRunningApplication(processIdentifier: window.pid) {
-                            revealConfirmation(window, running: running)
-                        }
-                        finish(updated)
-                        return
-                    }
-                    try WindowControlDriver(access: controlAccess).perform(.close, on: element)
-                    updated.requested += 1
-                } catch WindowControlFailure.stale {
-                    // Already closed outside WindowNest. Never retry a different window.
-                } catch WindowControlFailure.unavailable {
-                    updated.failures.append(WindowControlFailure.unavailable.message)
-                    finish(updated)
+                if Self.hasSheet(element) {
+                    var checked = report; checked.awaitingConfirmation = true
+                    if let running = NSRunningApplication(processIdentifier: window.pid) { revealConfirmation(window, running: running) }
+                    finish(checked)
                     return
-                } catch WindowControlFailure.permission {
-                    updated.failures.append(WindowControlFailure.permission.message)
-                    finish(updated)
-                    return
-                } catch {
-                    updated.failures.append((error as? WindowControlFailure)?.message ?? error.localizedDescription)
                 }
-                let current = updated
-                queue.asyncAfter(deadline: .now() + 0.25) {
-                    var checked = current
-                    // Save confirmation is never answered or dismissed by us.
-                    if Self.hasSheet(element) {
-                        checked.awaitingConfirmation = true
-                        if let running = NSRunningApplication(processIdentifier: window.pid) {
-                            self.revealConfirmation(window, running: running)
+                WindowControlDriver(access: controlAccess).requestClose(on: element,
+                    schedule: { delay, work in self.queue.asyncAfter(deadline: .now() + delay, execute: work) }) { result in
+                    var updated = report
+                    switch result {
+                    case .success:
+                        updated.requested += 1
+                        self.observeClose(window, running: NSRunningApplication(processIdentifier: window.pid))
+                    case .failure(let error):
+                        switch error {
+                        case WindowControlFailure.stale: break
+                        case WindowControlFailure.unavailable, WindowControlFailure.permission:
+                            updated.failures.append((error as! WindowControlFailure).message)
+                            finish(updated); return
+                        default: updated.failures.append((error as? WindowControlFailure)?.message ?? error.localizedDescription)
                         }
-                        finish(checked)
-                    } else { next(index + 1, checked) }
+                    }
+                    let current = updated
+                    self.queue.asyncAfter(deadline: .now() + 0.25) {
+                        var checked = current
+                        if Self.hasSheet(element) {
+                            checked.awaitingConfirmation = true
+                            if let running = NSRunningApplication(processIdentifier: window.pid) {
+                                self.revealConfirmation(window, running: running)
+                            }
+                            finish(checked)
+                        } else { next(index + 1, checked) }
+                    }
                 }
             }
             next(0, WindowBatchCloseReport())
