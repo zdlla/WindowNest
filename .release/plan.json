@@ -1,43 +1,44 @@
 {
-  "version": "0.20.1",
+  "version": "0.20.4",
   "files": [
     {
-      "name": "WindowNest-0.20.1-universal.zip",
-      "bytes": 8306969,
-      "sha256": "cfcf2d36be940c2b10663f0bd06c84ce3fcffc7131be3830f4bec5e0f602e366",
+      "name": "WindowNest-0.20.4-universal.zip",
+      "bytes": 8461791,
+      "sha256": "ddcfb9f203a5fd4fe408f31eaa3951c5452e3620ebb1f5af2e7cdda9079d5975",
       "parts": [
-        ".release-parts/WindowNest-0.20.1-universal.zip.part000",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part001",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part002",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part003",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part004",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part005",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part006",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part007",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part008",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part009",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part010",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part011",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part012",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part013",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part014",
-        ".release-parts/WindowNest-0.20.1-universal.zip.part015"
+        ".release-parts/WindowNest-0.20.4-universal.zip.part000",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part001",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part002",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part003",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part004",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part005",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part006",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part007",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part008",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part009",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part010",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part011",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part012",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part013",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part014",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part015",
+        ".release-parts/WindowNest-0.20.4-universal.zip.part016"
       ]
     },
     {
-      "name": "WindowNest-0.20.1-source.zip",
-      "bytes": 1176045,
-      "sha256": "16ca1936d612b54ce59d3c89d237eefd1434b553fd3cc4b7489ee7c0768da31d",
+      "name": "WindowNest-0.20.4-source.zip",
+      "bytes": 1203220,
+      "sha256": "5fef7475b5b0ab99a51a46146cf1e419e7d851b3559f5012169a68f2bf631ac3",
       "parts": [
-        ".release-parts/WindowNest-0.20.1-source.zip.part000",
-        ".release-parts/WindowNest-0.20.1-source.zip.part001",
-        ".release-parts/WindowNest-0.20.1-source.zip.part002"
+        ".release-parts/WindowNest-0.20.4-source.zip.part000",
+        ".release-parts/WindowNest-0.20.4-source.zip.part001",
+        ".release-parts/WindowNest-0.20.4-source.zip.part002"
       ]
     },
     {
       "name": "update-manifest.json",
-      "bytes": 404,
-      "sha256": "dcf1f619c6da98b04315cf673d38995479d81fa4ffdef52e5c63c45167104103",
+      "bytes": 434,
+      "sha256": "8f8a3b12b7e38182fd8d4f1f6954f9a0638f1138d81e7e2b45023fb23140f3f1",
       "parts": [
         ".release-parts/update-manifest.json.part000"
       ]
@@ -45,7 +46,7 @@
     {
       "name": "update-manifest.sig",
       "bytes": 89,
-      "sha256": "0de4abcb93739cebda05ec1edb62505a9f9c46db8e923024b6a53f2598270195",
+      "sha256": "259143e44363b98aac5a74fac3818b31a67e0b19be64369e75c2ecdbe0449e0a",
       "parts": [
         ".release-parts/update-manifest.sig.part000"
       ]
@@ -53,7 +54,7 @@
     {
       "name": "SHA256SUMS.txt",
       "bytes": 366,
-      "sha256": "9c6a26bf292dc907f3ce0fefa9a51718ed7faf56cd1c91ff5e2062bcce7642a8",
+      "sha256": "b71651d7e80f3e7abb8f09b3e290407294c501762556f29d6bbdaaf90b34e977",
       "parts": [
         ".release-parts/SHA256SUMS.txt.part000"
       ]

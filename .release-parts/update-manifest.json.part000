@@ -1,0 +1,10 @@
+{
+  "version": "0.20.4",
+  "build": 52,
+  "repository": "zdlla/WindowNest",
+  "minimumSystemVersion": "14.0",
+  "artifact": "WindowNest-0.20.4-universal.zip",
+  "sha256": "ddcfb9f203a5fd4fe408f31eaa3951c5452e3620ebb1f5af2e7cdda9079d5975",
+  "bytes": 8461791,
+  "notes": "文件盒支持八种新建格式和任意本地文件模板，改进图标网格与列表视觉，保留单击选中、行内重命名及双击默认打开。"
+}
